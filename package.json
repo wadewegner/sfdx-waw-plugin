@@ -1,0 +1,23 @@
+{
+  "name": "sfdx-oss-plugin",
+  "version": "0.0.1",
+  "description": "A plugin for the SFDX CLI that makes it easy to consume open source code.",
+  "main": "index.js",
+  "author": "Wade Wegner @WadeWegner",
+  "repository": "WadeWegner/sfdx-oss-plugin",
+  "bugs": {
+    "url": "https://github.com/wadewegner/sfdx-oss-plugin/issues"
+  },
+  "keywords": [
+    "sfdx-plugin",
+    "sfdx",
+    "oss"
+  ],
+  "license": "ISC",
+  "dependencies": {
+    "async": "^2.1.5",
+    "fs-extra": "^2.0.0",
+    "heroku-cli-util": "^6.0.16",
+    "url-exists": "^1.0.3"
+  }
+}
