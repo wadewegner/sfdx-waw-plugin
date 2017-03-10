@@ -9,8 +9,8 @@ var fse = require('fs-extra');
 var async = require('async');
 
 module.exports = {
-    topic: 'force',
-    command: 'source:oss',
+    topic: 'source',
+    command: 'oss',
     description: 'Easily pulls in open source from a Github repository',
     help: 'help text for force:source:oss',
     flags: [
@@ -96,11 +96,13 @@ module.exports = {
                                 fse.ensureDirSync(filePath);
 
                                 var localFile = fs.createWriteStream(filePathAndName);
-                                var fileUrl = rawUrlManifestFolder + fileName;
+                                var fileUrl = rawUrlManifestFolder + '/' + fileName;
+
+                                console.log(fileUrl);
 
                                 var request = https.get(fileUrl, function(response) {
                                     response.pipe(localFile);
-                                    console.log("  " + filePathAndName);
+                                    // console.log("  " + filePathAndName);
                                 });
 
                                 i++;
