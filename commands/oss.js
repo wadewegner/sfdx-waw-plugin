@@ -2,8 +2,7 @@ const urlExists = require('url-exists');
 const https = require('https');
 const fs = require('fs');
 const path = require('path');
-const fse = require('fs-extra');
-const async = require('async');
+const files = require('../lib/files.js');
 
 (function () {
   'use strict';
@@ -35,7 +34,7 @@ const async = require('async');
         hasValue: true
       }
     ],
-    run (context) {
+    run(context) {
 
       const targetPath = context.flags.path;
       const url = `https://github.com/${context.flags.repository}`;
@@ -61,7 +60,7 @@ const async = require('async');
 
         const rawUrlManifestFolder = `https://raw.githubusercontent.com/${context.flags.repository}/${branch}`;
         const rawUrlManifest = `${rawUrlManifestFolder}/sfdx-oss-manifest.json`;
-       
+
         // check to ensure sfdx-oss-manifest.json exists   
         urlExists(rawUrlManifest, (err2, manifestExists) => {
           if (!manifestExists) {
@@ -69,67 +68,38 @@ const async = require('async');
             return;
           }
 
-          // get the sfdx-oss-manifest.json file
-          https.get(rawUrlManifest, (manifestResponse) => {
-            let body = '';
+          files.getManifest(rawUrlManifest, (body) => {
 
-            manifestResponse.on('data', (chunk) => {
-              body += chunk;
-            });
+            const manifestJson = JSON.parse(body);
+            const version = manifestJson.version;
 
-            manifestResponse.on('end', () => {
-              const manifest = JSON.parse(body);
-              const version = manifest.version;
+            // check version
+            if (version === '1.0.0') {
 
-              // check version
-              if (version === '1.0.0') {
+              const sfdxSource = manifestJson.sfdxSource;
 
-                const sfdxSource = manifest.sfdxSource;
-
-                // currently only support SFDX source
-                if (!sfdxSource) {
-                  console.log('Currently only sfdx source is supported'); // eslint-disable-line no-console
-                  return;
-                }
-
-                // grab the files
-                const files = manifest.files;
-                let i = 0;
-
-                async.each(files, (fileName, complete) => {
-
-                  if (i === 0) {
-                    console.log('Writing files ...'); // eslint-disable-line no-console
-                  }
-                  
-                  const filePathAndName = path.join(targetPath, fileName);
-                  const filePath = path.dirname(filePathAndName);
-
-                  fse.ensureDirSync(filePath);
-
-                  const localFile = fs.createWriteStream(filePathAndName);
-                  const fileUrl = `${rawUrlManifestFolder}/${fileName}`;
-
-                  https.get(fileUrl, (fileResponse) => {
-                    fileResponse.pipe(localFile);
-                    console.log(`  ${filePathAndName}`); // eslint-disable-line no-console
-                  });
-
-                  i++;
-
-                  complete();
-
-                }, (err3) => {
-                  console.log(`An error occurred while writing the files: ${err3}`); // eslint-disable-line no-console
-                });
-
-              } else {
-                console.log('Only version 1.0.0 is currently supported'); // eslint-disable-line no-console
+              // currently only support SFDX source
+              if (!sfdxSource) {
+                console.log('Currently only sfdx source is supported'); // eslint-disable-line no-console
+                return;
               }
 
-            });
-          }).on('error', (err4) => {
-            console.log(`Error when trying to retrieve sfdx-oss-manifest.json file: ${err4}`); // eslint-disable-line no-console
+              // grab the files
+              const manifestFiles = manifestJson.files;
+
+              files.writeFiles(manifestFiles, targetPath, rawUrlManifestFolder, (outputFiles) => {
+                  
+                  console.log('Writing files ...'); // eslint-disable-line no-console
+
+                  for (let i = 0, len = outputFiles.length; i < len; i++) {
+                    console.log(`  ${outputFiles[i]}`); // eslint-disable-line no-console
+                  }
+
+              });
+
+            } else {
+                console.log('Only version 1.0.0 is currently supported'); // eslint-disable-line no-console
+            }
           });
         });
       });
