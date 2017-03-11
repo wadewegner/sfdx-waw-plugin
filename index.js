@@ -1,4 +1,5 @@
 const oss = require('./commands/oss.js');
+const manifestCreate = require('./commands/create.js');
 
 (function () {
   'use strict';
@@ -13,6 +14,6 @@ const oss = require('./commands/oss.js');
     description: 'community commands from Trailhead'
   };
 
-  exports.commands = [oss];
+  exports.commands = [oss, manifestCreate];
   
 }());

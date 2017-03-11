@@ -1,5 +1,7 @@
 const assert = require('chai').assert;
 const files = require('../lib/files.js');
+const manifest = require('../lib/manifest.js');
+const path = require('path');
 const shell = require('shelljs');
 
 (function () {
@@ -52,6 +54,22 @@ const shell = require('shelljs');
           done();
 
         });
+      });
+    });
+
+    describe('creating manifest', () => {
+      it('manifest create should return a string pointing to the new manifest file', (done) => {
+
+        manifest.createManifest(path, (manifestPath) => {
+
+          assert.isNotNull(manifestPath);
+          
+          assert.equal(path.extname(manifestPath), '.json');
+
+          done();
+
+        });
+
       });
     });
 
