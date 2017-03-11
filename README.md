@@ -1,4 +1,4 @@
-# sfdx-oss-plugins
+# sfdx-oss-plugins [![Build Status](https://travis-ci.org/wadewegner/sfdx-oss-plugin.svg?branch=master)](https://travis-ci.org/wadewegner/sfdx-oss-plugin)
 
 A plugin for the SFDX CLI that makes it easy to consume open source code.
 
