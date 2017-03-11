@@ -88,17 +88,17 @@ const files = require('../lib/files.js');
               const manifestFiles = manifestJson.files;
 
               files.writeFiles(manifestFiles, targetPath, rawUrlManifestFolder, (outputFiles) => {
-                  
-                  console.log('Writing files ...'); // eslint-disable-line no-console
 
-                  for (let i = 0, len = outputFiles.length; i < len; i++) {
-                    console.log(`  ${outputFiles[i]}`); // eslint-disable-line no-console
-                  }
+                console.log('Writing files ...'); // eslint-disable-line no-console
+
+                for (let i = 0, len = outputFiles.length; i < len; i++) {
+                  console.log(`  ${outputFiles[i]}`); // eslint-disable-line no-console
+                }
 
               });
 
             } else {
-                console.log('Only version 1.0.0 is currently supported'); // eslint-disable-line no-console
+              console.log('Only version 1.0.0 is currently supported'); // eslint-disable-line no-console
             }
           });
         });
