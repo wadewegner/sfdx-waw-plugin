@@ -1,131 +1,137 @@
-'use strict'
+const urlExists = require('url-exists');
+const https = require('https');
+const fs = require('fs');
+const path = require('path');
+const fse = require('fs-extra');
+const async = require('async');
 
-var request = require('request');
-var urlExists = require('url-exists');
-var https = require('https');
-var fs = require('fs');
-var path = require('path');
-var fse = require('fs-extra');
-var async = require('async');
+(function () {
+  'use strict';
 
-module.exports = {
+  module.exports = {
     topic: 'source',
     command: 'oss',
     description: 'Easily pulls in open source from a Github repository',
     help: 'help text for force:source:oss',
-    flags: [
-        { name: 'repository', char: 'r', description: 'Github repository (e.g. "wadewegner/Strike-Components")', required: true, hasValue: true },
-        { name: 'path', char: 'p', description: 'Path for downloaded source', required: true, hasValue: true },
-        { name: 'branch', char: 'b', description: 'Github repository branch (default is "master"', required: false, hasValue: true }
+    flags: [{
+        name: 'repository',
+        char: 'r',
+        description: 'Github repository (e.g. "wadewegner/Strike-Components")',
+        required: true,
+        hasValue: true
+      },
+      {
+        name: 'path',
+        char: 'p',
+        description: 'Path for downloaded source',
+        required: true,
+        hasValue: true
+      },
+      {
+        name: 'branch',
+        char: 'b',
+        description: 'Github repository branch (default is "master"',
+        required: false,
+        hasValue: true
+      }
     ],
-    run: function (context) {
+    run (context) {
 
-        var targetPath = context.flags.path;
+      const targetPath = context.flags.path;
 
-        if (!fs.existsSync(targetPath)) {
-            console.log("Specifiec file path doesn't exists");
+      if (!fs.existsSync(targetPath)) {
+        console.log("Specifiec file path doesn't exists"); // eslint-disable-line no-console
+        return;
+      }
+
+      const url = `https://github.com/${context.flags.repository}`;
+
+      // if branch not specified, default to master
+      let branch = context.flags.branch;
+      if (!branch) {
+        branch = 'master';
+      }
+
+      // check to ensure Github repo exists
+      urlExists(url, (err1, repoExists) => {
+        if (!repoExists) {
+          console.log('Github repository not found'); // eslint-disable-line no-console
+          return;
+        }
+
+        const rawUrlManifestFolder = `https://raw.githubusercontent.com/${context.flags.repository}/${branch}`;
+        const rawUrlManifest = `${rawUrlManifestFolder}/sfdx-oss-manifest.json`;
+       
+        // check to ensure sfdx-oss-manifest.json exists   
+        urlExists(rawUrlManifest, (err2, manifestExists) => {
+          if (!manifestExists) {
+            console.log('sfdx-oss-manifest.json not found in repository'); // eslint-disable-line no-console
             return;
-        }
+          }
 
-        var url = 'https://github.com/' + context.flags.repository;
+          // get the sfdx-oss-manifest.json file
+          https.get(rawUrlManifest, (manifestResponse) => {
+            let body = '';
 
-        // if branch not specified, default to master
-        var branch = context.flags.branch;
-        if (!branch) {
-            branch = "master";
-        }
+            manifestResponse.on('data', (chunk) => {
+              body += chunk;
+            });
 
-        // check to ensure Github repo exists
-        urlExists(url, function(err, exists) {
-            if (!exists) {
-                console.log("Github repository not found");
-                return;
-            }
+            manifestResponse.on('end', () => {
+              const manifest = JSON.parse(body);
+              const version = manifest.version;
 
-            var rawUrlManifestFolder = 'https://raw.githubusercontent.com/' + context.flags.repository + '/' + branch;
-            var rawUrlManifest = rawUrlManifestFolder + '/sfdx-oss-manifest.json';
-            // check to ensure sfdx-oss-manifest.json exists   
-            urlExists(rawUrlManifest, function(err, exists) {
-                if (!exists) {
-                    console.log("sfdx-oss-manifest.json not found in repository");
-                    return;
+              // check version
+              if (version === '1.0.0') {
+
+                const sfdxSource = manifest.sfdxSource;
+
+                // currently only support SFDX source
+                if (!sfdxSource) {
+                  console.log('Currently only sfdx source is supported'); // eslint-disable-line no-console
+                  return;
                 }
 
-                // get the sfdx-oss-manifest.json file
-                https.get(rawUrlManifest, function(res){
-                    var body = '';
+                const files = manifest.files;
 
-                    res.on('data', function(chunk){
-                        body += chunk;
-                    });
+                let i = 0;
 
-                    res.on('end', function(){
-                        var manifest = JSON.parse(body);
-                        var version = manifest.version;
+                async.each(files, (fileName, complete) => {
 
-                        // check version
-                        if (version == "1.0.0") {
+                  if (i === 0) {
+                    console.log('Writing files ...'); // eslint-disable-line no-console
+                  }
+                  const filePathAndName = path.join(targetPath, fileName);
+                  const filePath = path.dirname(filePathAndName);
 
-                            var sfdxSource = manifest.sfdxSource;
+                  fse.ensureDirSync(filePath);
 
-                            // currently only support SFDX source
-                            if (!sfdxSource) {
-                                console.log("Currently only sfdx source is supported");
-                                return;
-                            }
-                            
-                            var folders = manifest.folders;
-                            var files = manifest.files;
+                  const localFile = fs.createWriteStream(filePathAndName);
+                  const fileUrl = `${rawUrlManifestFolder}/${fileName}`;
 
-                            // TODO: not yet supported
-                            for(var folder in folders){
-                                // var value = folders[folder];
-                                // console.log(value);
-                            }
+                  https.get(fileUrl, (fileResponse) => {
+                    fileResponse.pipe(localFile);
+                    console.log(`  ${filePathAndName}`); // eslint-disable-line no-console
+                  });
 
-                            var i = 0;
+                  i++;
 
-                            async.each(files, function(fileName, complete){
+                  complete();
 
-                                if (i == 0) {
-                                    console.log("writing files ...");
-                                }
-                                var filePathAndName = path.join(targetPath, fileName);
-                                var filePath = path.dirname(filePathAndName);
-
-                                fse.ensureDirSync(filePath);
-
-                                var localFile = fs.createWriteStream(filePathAndName);
-                                var fileUrl = rawUrlManifestFolder + '/' + fileName;
-
-                                console.log(fileUrl);
-
-                                var request = https.get(fileUrl, function(response) {
-                                    response.pipe(localFile);
-                                    // console.log("  " + filePathAndName);
-                                });
-
-                                i++;
-
-                                complete();
-
-                            }, function(err){
-                                // console.log("An error occurred while writing the files: " + err);
-                            });
-
-                        } else {
-                            console.log("Only version 1.0.0 is currently supported");
-                            return;
-                        }
-
-                    });
-                }).on('error', function(e){
-                    console.log("Error when trying to retrieve sfdx-oss-manifest.json file");
+                }, (err3) => {
+                  console.log(`An error occurred while writing the files: ${err3}`); // eslint-disable-line no-console
                 });
 
-
+              } else {
+                console.log('Only version 1.0.0 is currently supported'); // eslint-disable-line no-console
+              }
 
             });
+          }).on('error', (err4) => {
+            console.log(`Error when trying to retrieve sfdx-oss-manifest.json file: ${err4}`); // eslint-disable-line no-console
+          });
         });
+      });
     }
-}
+  };
+}());

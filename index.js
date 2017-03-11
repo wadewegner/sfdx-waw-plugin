@@ -1,16 +1,17 @@
-'use strict';
-exports.topic = {
-  name: 'source',
-  // this is the help text that shows up under `heroku help`
-  description: 'source related command'
-}
+const oss = require('./commands/oss.js');
 
-exports.namespace = {
-        name: "trailhead",
-        description : "community commands from Trailhead"
-    };
+(function () {
+  'use strict';
 
-exports.commands = [
-  require('./commands/oss.js')
-]
+  exports.topic = {
+    name: 'source',
+    description: 'source related command'
+  };
 
+  exports.namespace = {
+    name: 'trailhead',
+    description: 'community commands from Trailhead'
+  };
+
+  exports.commands = [oss];
+});
