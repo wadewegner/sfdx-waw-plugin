@@ -14,4 +14,5 @@ const oss = require('./commands/oss.js');
   };
 
   exports.commands = [oss];
-});
+  
+}());
