@@ -38,13 +38,13 @@ const async = require('async');
     run (context) {
 
       const targetPath = context.flags.path;
+      const url = `https://github.com/${context.flags.repository}`;
 
+      // ensure source folder exists
       if (!fs.existsSync(targetPath)) {
         console.log("Specifiec file path doesn't exists"); // eslint-disable-line no-console
         return;
       }
-
-      const url = `https://github.com/${context.flags.repository}`;
 
       // if branch not specified, default to master
       let branch = context.flags.branch;
@@ -92,8 +92,8 @@ const async = require('async');
                   return;
                 }
 
+                // grab the files
                 const files = manifest.files;
-
                 let i = 0;
 
                 async.each(files, (fileName, complete) => {
@@ -101,6 +101,7 @@ const async = require('async');
                   if (i === 0) {
                     console.log('Writing files ...'); // eslint-disable-line no-console
                   }
+                  
                   const filePathAndName = path.join(targetPath, fileName);
                   const filePath = path.dirname(filePathAndName);
 
