@@ -2,6 +2,8 @@
 
 A plugin for the SFDX CLI that makes it easy to consume open source code.
 
+[![SFDX OSS command](https://img.youtube.com/vi/p3f-Fk_M-C0/0.jpg)](https://www.youtube.com/watch?v=p3f-Fk_M-C0)
+
 ## Setup
 
 1. Install the SDFX CLI.
