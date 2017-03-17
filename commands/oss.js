@@ -1,7 +1,5 @@
 const urlExists = require('url-exists');
-const https = require('https');
 const fs = require('fs');
-const path = require('path');
 const files = require('../lib/files.js');
 
 (function () {

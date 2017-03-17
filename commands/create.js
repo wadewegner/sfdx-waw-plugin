@@ -1,3 +1,7 @@
+const recursive = require('recursive-readdir');
+const path = require('path');
+const jsonfile = require('jsonfile');
+
 (function () {
   'use strict';
 
@@ -15,8 +19,30 @@
     }],
     run(context) {
 
-      console.log(context.flags.path);
+      const dir = context.flags.path;
 
+      let json = {
+        sfdxSource: true,
+        version : '1.0.0',
+        files: [
+        ]
+      };
+
+      recursive(dir, (err, files) => {
+
+        // console.log(file);
+        json.files.push(files);
+        // console.log(json);
+
+        const filePathAndName = path.join('.', 'sfdx-oss-manifest.json');
+        
+        jsonfile.writeFileSync(filePathAndName, json, {spaces: 2});
+
+        console.log(`Created file ${filePathAndName}`);
+
+      });
+
+      
     }
   };
 }());
