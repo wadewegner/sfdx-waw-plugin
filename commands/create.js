@@ -9,7 +9,7 @@ const jsonfile = require('jsonfile');
     topic: 'source',
     command: 'create',
     description: 'Create a manifest file for your open source project',
-    help: 'help text for force:source:manifest:create',
+    help: 'help text for trailhead:source:manifest:create',
     flags: [{
       name: 'path',
       char: 'p',
@@ -31,7 +31,7 @@ const jsonfile = require('jsonfile');
       recursive(dir, (err, files) => {
 
         json.files.push(files);
-        jsonfile.writeFileSync(filePathAndName, json, {spaces: 2});
+        jsonfile.writeFileSync(filePathAndName, json, { spaces: 2 });
         console.log(`Created file ${filePathAndName}`); // eslint-disable-line no-console
 
       });
