@@ -20,8 +20,8 @@ const jsonfile = require('jsonfile');
     run(context) {
 
       const dir = context.flags.path;
-
-      let json = {
+      const filePathAndName = path.join('.', 'sfdx-oss-manifest.json');
+      const json = {
         sfdxSource: true,
         version : '1.0.0',
         files: [
@@ -30,19 +30,11 @@ const jsonfile = require('jsonfile');
 
       recursive(dir, (err, files) => {
 
-        // console.log(file);
         json.files.push(files);
-        // console.log(json);
-
-        const filePathAndName = path.join('.', 'sfdx-oss-manifest.json');
-        
         jsonfile.writeFileSync(filePathAndName, json, {spaces: 2});
-
-        console.log(`Created file ${filePathAndName}`);
+        console.log(`Created file ${filePathAndName}`); // eslint-disable-line no-console
 
       });
-
-      
     }
   };
 }());
