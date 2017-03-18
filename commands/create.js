@@ -9,7 +9,7 @@ const jsonfile = require('jsonfile');
     topic: 'source',
     command: 'create',
     description: 'Create a manifest file for your open source project',
-    help: 'help text for trailhead:source:manifest:create',
+    help: 'help text for trailhead:source:create',
     flags: [{
       name: 'path',
       char: 'p',
@@ -32,7 +32,7 @@ const jsonfile = require('jsonfile');
 
         json.files.push(files);
         jsonfile.writeFileSync(filePathAndName, json, { spaces: 2 });
-        console.log(`Created file ${filePathAndName}`); // eslint-disable-line no-console
+        console.log(`Created file ${filePathAndName}. Be sure to remove files you don't want to include.`); // eslint-disable-line no-console
 
       });
     }
