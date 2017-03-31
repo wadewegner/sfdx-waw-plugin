@@ -27,7 +27,14 @@ const files = require('../lib/files.js');
       {
         name: 'branch',
         char: 'b',
-        description: 'Github repository branch (default is "master"',
+        description: 'Github repository branch (default is "master")',
+        required: false,
+        hasValue: true
+      },
+      {
+        name: 'server',
+        char: 's',
+        description: 'Git host server url (default is "github.com")',
         required: false,
         hasValue: true
       }
@@ -35,7 +42,14 @@ const files = require('../lib/files.js');
     run(context) {
 
       const targetPath = context.flags.path;
-      const url = `https://github.com/${context.flags.repository}`;
+
+      // if host is not specified then use github.com
+      let server = context.flags.server;
+      if (!server) {
+        server = 'github.com';
+      }
+
+      const url = `https://${server}/${context.flags.repository}`;
 
       // ensure source folder exists
       if (!fs.existsSync(targetPath)) {
