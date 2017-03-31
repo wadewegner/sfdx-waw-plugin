@@ -10,8 +10,8 @@ const manifestCreate = require('./commands/create.js');
   };
 
   exports.namespace = {
-    name: 'trailhead',
-    description: 'community commands from Trailhead'
+    name: 'wadewegner',
+    description: 'commands from Wade Wegner'
   };
 
   exports.commands = [oss, manifestCreate];

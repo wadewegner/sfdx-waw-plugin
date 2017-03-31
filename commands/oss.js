@@ -9,7 +9,7 @@ const files = require('../lib/files.js');
     topic: 'source',
     command: 'oss',
     description: 'Easily pulls in open source from a Github repository',
-    help: 'help text for trailhead:source:oss',
+    help: 'help text for wadewegner:source:oss',
     flags: [{
         name: 'repository',
         char: 'r',
