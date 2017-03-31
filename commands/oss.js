@@ -13,7 +13,7 @@ const files = require('../lib/files.js');
     flags: [{
         name: 'repository',
         char: 'r',
-        description: 'Github repository (e.g. "wadewegner/Strike-Components")',
+        description: 'Git repository (e.g. "wadewegner/Strike-Components")',
         required: true,
         hasValue: true
       },
@@ -27,7 +27,7 @@ const files = require('../lib/files.js');
       {
         name: 'branch',
         char: 'b',
-        description: 'Github repository branch (default is "master")',
+        description: 'Git repository branch (default is "master")',
         required: false,
         hasValue: true
       },
