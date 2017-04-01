@@ -43,7 +43,7 @@ const ScratchOrg = require(path.join(os.homedir(), '.local/share/heroku/plugins/
           if (orgData.username === targetUsername || orgData.alias === targetUsername) {
 
             const username = orgData.username;
-            
+
             const org = new ScratchOrg();
             org.setName(username);
 
@@ -71,25 +71,16 @@ const ScratchOrg = require(path.join(os.homedir(), '.local/share/heroku/plugins/
                 conn.metadata.create('ConnectedApp', metadata, (createErr, results) => {
                   if (results.success) {
                     conn.metadata.read('ConnectedApp', connectedAppName, (readErr, metadataResult) => {
-                      console.log(metadataResult);
+                      console.log(metadataResult); // eslint-disable-line no-console
                     });
                   } else {
-                    console.log(results);
+                    console.log(results); // eslint-disable-line no-console
                   }
                 });
               }));
-
           }
         });
       });
-
-
-
-
-
-
-
-
     }
   };
 }());
