@@ -2,6 +2,7 @@ const path = require('path');
 const os = require('os');
 const alm = require('salesforce-alm');
 const ScratchOrg = require(path.join(os.homedir(), '.local/share/heroku/plugins/node_modules/salesforce-alm/lib/scratchOrgApi'));
+const forceUtils = require('../lib/forceUtils.js');
 
 (function () {
   'use strict';
@@ -30,12 +31,11 @@ const ScratchOrg = require(path.join(os.homedir(), '.local/share/heroku/plugins/
 
       const targetUsername = context.flags.targetusername;
       const connectedAppName = context.flags.connectedappname;
-      let generatedConsumerSecret = '';
+      const generatedConsumerSecret = forceUtils.getConsumerSecret();
       const possible = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
 
-      for (let i=0; i < 9; i++ ) {
-          generatedConsumerSecret += possible.charAt(Math.floor(Math.random() * possible.length));
-      }
+      console.log(generatedConsumerSecret);
+      return;
 
       alm.orgApi.list().then((data) => {
         data.forEach((orgData) => {
