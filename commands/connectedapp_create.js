@@ -79,26 +79,26 @@ const fs = require('fs');
                 // console.log(conn.metadata);
 
                 conn.metadata.read('ConnectedApp', connectedAppName, (readErr, metadataResult) => {
-                  // console.log(metadataResult); // eslint-disable-line no-console
+                  console.log(metadataResult); // eslint-disable-line no-console
 
-                  var records = [];
-                  conn.query(`SELECT Id FROM ConnectedApplication WHERE Name = '${connectedAppName}'`, function (err, result) {
-                    if (err) {
-                      return console.error(err);
-                    }
-                    // console.log(result.records[0].Id);
+                  // var records = [];
+                  // conn.query(`SELECT Id FROM ConnectedApplication WHERE Name = '${connectedAppName}'`, function (err, result) {
+                  //   if (err) {
+                  //     return console.error(err);
+                  //   }
+                  //   // console.log(result.records[0].Id);
 
-                    const id = result.records[0].Id;
+                  //   const id = result.records[0].Id;
 
-                    conn.sobject("ConnectedApplication").update({ 
-                      Id : id,
-                      OptionsAllowAdminApprovedUsersOnly : true
-                    }, function(err, ret) {
-                      if (err || !ret.success) { return console.error(err, ret); }
-                      console.log('Updated Successfully : ' + ret.id);
-                      // ...
-                    });
-                  });
+                  //   conn.sobject("ConnectedApplication").update({ 
+                  //     Id : id,
+                  //     OptionsAllowAdminApprovedUsersOnly : true
+                  //   }, function(err, ret) {
+                  //     if (err || !ret.success) { return console.error(err, ret); }
+                  //     console.log('Updated Successfully : ' + ret.id);
+                  //     // ...
+                  //   });
+                  // });
                 });
               } else {
                 console.log(results); // eslint-disable-line no-console
