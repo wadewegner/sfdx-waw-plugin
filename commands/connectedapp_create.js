@@ -2,6 +2,8 @@ const path = require('path');
 const os = require('os');
 const ScratchOrg = require(path.join(os.homedir(), '.local/share/heroku/plugins/node_modules/salesforce-alm/lib/scratchOrgApi'));
 const forceUtils = require('../lib/forceUtils.js');
+const crypto = require('crypto');
+const fs = require('fs');
 
 (function () {
   'use strict';
@@ -35,11 +37,22 @@ const forceUtils = require('../lib/forceUtils.js');
 
       forceUtils.getUsername(targetUsername, (username) => {
 
-        const org = new ScratchOrg();
+      var prime_length = 2048;
+      var diffHell = crypto.createDiffieHellman(prime_length);
+      diffHell.generateKeys('base64');
+      const pubKey = diffHell.getPublicKey('base64');
+      const privKey = diffHell.getPrivateKey('base64');
 
-        org.setName(username);
-        org.refreshAuth()
-          .then(() => org.force._getConnection(org, org.config).then((conn) => {
+        fs.writeFile("server.key", privKey, function (err) {
+          if (err) {
+            return console.log(err);
+          }
+
+          console.log("The file was saved!");
+        });
+
+        ScratchOrg.create(username).then(org => {
+          org.force._getConnection(org, org.config).then((conn) => {
 
             const metadata = [{
               contactEmail: username,
@@ -49,6 +62,7 @@ const forceUtils = require('../lib/forceUtils.js');
               oauthConfig: {
                 callbackUrl: 'sfdx://success',
                 consumerSecret: generatedConsumerSecret,
+                certificate: pubKey,
                 scopes: [
                   'Basic',
                   'Api',
@@ -61,14 +75,46 @@ const forceUtils = require('../lib/forceUtils.js');
 
             conn.metadata.create('ConnectedApp', metadata, (createErr, results) => {
               if (results.success) {
+
+                // console.log(conn.metadata);
+
                 conn.metadata.read('ConnectedApp', connectedAppName, (readErr, metadataResult) => {
-                  console.log(metadataResult); // eslint-disable-line no-console
+                  // console.log(metadataResult); // eslint-disable-line no-console
+
+                  var records = [];
+                  conn.query(`SELECT Id FROM ConnectedApplication WHERE Name = '${connectedAppName}'`, function (err, result) {
+                    if (err) {
+                      return console.error(err);
+                    }
+                    // console.log(result.records[0].Id);
+
+                    const id = result.records[0].Id;
+
+                    conn.sobject("ConnectedApplication").update({ 
+                      Id : id,
+                      OptionsAllowAdminApprovedUsersOnly : true
+                    }, function(err, ret) {
+                      if (err || !ret.success) { return console.error(err, ret); }
+                      console.log('Updated Successfully : ' + ret.id);
+                      // ...
+                    });
+                  });
                 });
               } else {
                 console.log(results); // eslint-disable-line no-console
               }
             });
-          }));
+
+          });
+        });
+
+
+        // org.setName(username);
+        // org.refreshAuth()
+        //   .then(() => org.force._getConnection(org, org.config).then((conn) => {
+
+
+        //   }));
       });
     }
   };
