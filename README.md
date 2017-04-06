@@ -16,7 +16,7 @@ A plugin for the SFDX CLI with a number of useful commands.
 
 ### Install as plugin
 
-1. `sfdx plugins:install sfdx-oss-plugin
+1. Install plugin: `sfdx plugins:install sfdx-oss-plugin`
 
 ## Create a Connected App
 
