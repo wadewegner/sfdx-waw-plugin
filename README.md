@@ -20,11 +20,29 @@ A plugin for the SFDX CLI with a number of useful commands.
 
 ## Create a Connected App
 
-`sfdx wadewegner:connectedapp:create -u <username|alias> -n <ConnectedAppName`
+Simple example: `sfdx wadewegner:connectedapp:create -u <username|alias> -n <ConnectedAppName>`
+
+With a self-signed certificate: `sfdx wadewegner:connectedapp:create -u <username|alias> -n <ConnectedAppName> -r`
+
+Lots of options available:
+
+```
+-> sfdx wadewegner:connectedapp:create --help
+Usage: sfdx wadewegner:connectedapp:create
+
+Create a connected app in your org
+
+ -c, --callbackurl CALLBACKURL       # callbackUrl (default is "sfdx://success")
+ -r, --certificate                   # create and register a certificate
+ -d, --description DESCRIPTION       # connected app description
+ -n, --name NAME                     # connected app name
+ -s, --scopes SCOPES                 # scopes separated by commas (defaut: Basic, Api, Web, Refresh; valid: Basic, Api, Web, Full, Chatter, CustomApplications, RefreshToken, OpenID, CustomPermissions, Wave, Eclair)
+ -u, --targetusername TARGETUSERNAME # username or alias for the target org
+```
 
 ## List a Connected App
 
-`sfdx wadewegner:connectedapp:list -u <username|alias> -n <ConnectedAppName`
+List a Connected App: `sfdx wadewegner:connectedapp:list -u <username|alias> -n <ConnectedAppName>`
 
 ## Pull open source into your project
 
