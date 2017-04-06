@@ -2,7 +2,10 @@ const path = require('path');
 const os = require('os');
 const ScratchOrg = require(path.join(os.homedir(), '.local/share/heroku/plugins/node_modules/salesforce-alm/lib/scratchOrgApi'));
 const forceUtils = require('../lib/forceUtils.js');
-const crypto = require('crypto');
+var forge = require('node-forge');
+
+
+
 const fs = require('fs');
 
 (function () {
@@ -37,18 +40,94 @@ const fs = require('fs');
 
       forceUtils.getUsername(targetUsername, (username) => {
 
-      var prime_length = 2048;
-      var diffHell = crypto.createDiffieHellman(prime_length);
-      diffHell.generateKeys('base64');
-      const pubKey = diffHell.getPublicKey('base64');
-      const privKey = diffHell.getPrivateKey('base64');
+        var pki = forge.pki;
+        var keys = pki.rsa.generateKeyPair(2048);
+        var privKey = forge.pki.privateKeyToPem(keys.privateKey);
+
+        var cert = pki.createCertificate();
+        cert.publicKey = keys.publicKey;
+        cert.serialNumber = '01';
+        cert.validity.notBefore = new Date();
+        cert.validity.notAfter = new Date();
+        cert.validity.notAfter.setFullYear(cert.validity.notBefore.getFullYear() + 1);
+        var attrs = [{
+          name: 'commonName',
+          value: 'wadewegner.com'
+        }, {
+          name: 'countryName',
+          value: 'US'
+        }, {
+          shortName: 'ST',
+          value: 'Washington'
+        }, {
+          name: 'localityName',
+          value: 'Redmond'
+        }, {
+          name: 'organizationName',
+          value: 'WadeWegner'
+        }, {
+          shortName: 'OU',
+          value: 'WadeWegner'
+        }];
+        cert.setSubject(attrs);
+        cert.setIssuer(attrs);
+        cert.setExtensions([{
+          name: 'basicConstraints',
+          cA: true
+        }, {
+          name: 'keyUsage',
+          keyCertSign: true,
+          digitalSignature: true,
+          nonRepudiation: true,
+          keyEncipherment: true,
+          dataEncipherment: true
+        }, {
+          name: 'extKeyUsage',
+          serverAuth: true,
+          clientAuth: true,
+          codeSigning: true,
+          emailProtection: true,
+          timeStamping: true
+        }, {
+          name: 'nsCertType',
+          client: true,
+          server: true,
+          email: true,
+          objsign: true,
+          sslCA: true,
+          emailCA: true,
+          objCA: true
+        }, {
+          name: 'subjectAltName',
+          altNames: [{
+            type: 6, // URI
+            value: 'http://example.org/webid#me'
+          }, {
+            type: 7, // IP
+            ip: '127.0.0.1'
+          }]
+        }, {
+          name: 'subjectKeyIdentifier'
+        }]);
+
+        // self-sign certificate
+        cert.sign(keys.privateKey);
+        var pubKey = pki.certificateToPem(cert);
 
         fs.writeFile("server.key", privKey, function (err) {
           if (err) {
             return console.log(err);
           }
 
-          console.log("The file was saved!");
+          console.log("server.key was successfully created!");
+        });
+
+        fs.writeFile("server.crt", pubKey, function (err) {
+          if (err) {
+            return console.log(err);
+          }
+
+          console.log("server.cer was successfully created!");
         });
 
         ScratchOrg.create(username).then(org => {
