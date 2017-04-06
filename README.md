@@ -1,16 +1,30 @@
 # sfdx-oss-plugins [![Build Status](https://travis-ci.org/wadewegner/sfdx-oss-plugin.svg?branch=master)](https://travis-ci.org/wadewegner/sfdx-oss-plugin)
 
-A plugin for the SFDX CLI that makes it easy to consume open source code.
-
-[![SFDX OSS command](https://img.youtube.com/vi/p3f-Fk_M-C0/0.jpg)](https://www.youtube.com/watch?v=p3f-Fk_M-C0)
+A plugin for the SFDX CLI with a number of useful commands.
 
 ## Setup
 
+### Install from source
+
 1. Install the SDFX CLI.
 
-2. Install npm modules: `npm install`
+2. Clone the repository: `git clone git@github.com:wadewegner/sfdx-oss-plugin.git`
 
-3. Link the plugin: `sfdx plugins:link .`
+3. Install npm modules: `npm install`
+
+4. Link the plugin: `sfdx plugins:link .`
+
+### Install as plugin
+
+1. `sfdx plugins:install sfdx-oss-plugin
+
+## Create a Connected App
+
+`sfdx wadewegner:connectedapp:create -u <username|alias> -n <ConnectedAppName`
+
+## List a Connected App
+
+`sfdx wadewegner:connectedapp:list -u <username|alias> -n <ConnectedAppName`
 
 ## Pull open source into your project
 
