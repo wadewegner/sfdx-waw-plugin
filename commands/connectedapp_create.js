@@ -54,7 +54,7 @@ const fs = require('fs');
         // Basic,Api,Web,Full,Chatter,CustomApplications,RefreshToken,OpenID,CustomPermissions,Wave,Eclair
         name: 'scopes',
         char: 's',
-        description: 'scopes separated by commas (defaut: Basic, Api, Web, Refresh; valid: Basic, Api, Web, Full, Chatter, CustomApplications, RefreshToken, OpenID, CustomPermissions, Wave, Eclair)',
+        description: 'scopes separated by commas (defaut: Basic, Api, Web, RefreshToken; valid: Basic, Api, Web, Full, Chatter, CustomApplications, RefreshToken, OpenID, CustomPermissions, Wave, Eclair)',
         hasValue: true,
         required: false
       }
@@ -77,7 +77,7 @@ const fs = require('fs');
       if (origScopes) {
         appScopes = origScopes.split(',');
       } else {
-        appScopes = ['Basic', 'Api', 'Web'];
+        appScopes = ['Basic', 'Api', 'Web', 'RefreshToken'];
       }
 
       const generatedConsumerSecret = forceUtils.getConsumerSecret();
