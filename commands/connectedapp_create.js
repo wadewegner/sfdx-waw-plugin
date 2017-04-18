@@ -1,10 +1,25 @@
 const path = require('path');
 const os = require('os');
-const ScratchOrg = require(path.join(os.homedir(), '.local/share/heroku/plugins/node_modules/salesforce-alm/lib/scratchOrgApi'));
+
+const ScratchOrg = require(LoadScratchOrgApi());
 const forceUtils = require('../lib/forceUtils.js');
 const forge = require('node-forge');
 const certs = require('../lib/certs.js');
 const fs = require('fs');
+
+function LoadScratchOrgApi() {
+
+  let pluginPath;
+  var isWin = /^win/.test(process.platform);
+
+  if (isWin) {
+    pluginPath = path.join(os.homedir(), '/AppData/Local/heroku/plugins/node_modules/salesforce-alm/lib/scratchOrgApi');
+  } else {
+    pluginPath = path.join(os.homedir(), '.local/share/heroku/plugins/node_modules/salesforce-alm/lib/scratchOrgApi')
+  }
+
+  return pluginPath;
+}
 
 (function () {
   'use strict';

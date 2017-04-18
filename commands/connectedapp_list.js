@@ -1,7 +1,21 @@
 const path = require('path');
 const os = require('os');
-const ScratchOrg = require(path.join(os.homedir(), '.local/share/heroku/plugins/node_modules/salesforce-alm/lib/scratchOrgApi'));
+const ScratchOrg = require(LoadScratchOrgApi());
 const forceUtils = require('../lib/forceUtils.js');
+
+function LoadScratchOrgApi() {
+
+  let pluginPath;
+  var isWin = /^win/.test(process.platform);
+
+  if (isWin) {
+    pluginPath = path.join(os.homedir(), '/AppData/Local/heroku/plugins/node_modules/salesforce-alm/lib/scratchOrgApi');
+  } else {
+    pluginPath = path.join(os.homedir(), '.local/share/heroku/plugins/node_modules/salesforce-alm/lib/scratchOrgApi')
+  }
+
+  return pluginPath;
+}
 
 (function () {
   'use strict';
@@ -10,7 +24,7 @@ const forceUtils = require('../lib/forceUtils.js');
     topic: 'connectedapp',
     command: 'list',
     description: 'List the connected apps in your org',
-    help: 'help text for wadewegner:connectedapp:list',
+    help: 'help text for wadewegner:connected`app:list',
     flags: [
       {
         name: 'targetusername',
@@ -27,6 +41,9 @@ const forceUtils = require('../lib/forceUtils.js');
         required: true
       }],
     run(context) {
+
+
+      // LoadModules();
 
       const targetUsername = context.flags.targetusername;
       const connectedappname = context.flags.connectedappname;
