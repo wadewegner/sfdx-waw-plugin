@@ -9,7 +9,7 @@ const connectedAppList = require('./commands/connectedapp_list.js');
   exports.topics = [{
     name: 'source',
     description: 'source related command'
-  }, {
+  },{
     name: 'connectedapp',
     description: 'commands related to connected apps'
   }];

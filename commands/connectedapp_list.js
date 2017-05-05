@@ -9,9 +9,9 @@ function LoadScratchOrgApi() {
   var isWin = /^win/.test(process.platform);
 
   if (isWin) {
-    pluginPath = path.join(os.homedir(), '/AppData/Local/heroku/plugins/node_modules/salesforce-alm/lib/scratchOrgApi');
+    pluginPath = path.join(os.homedir(), '/AppData/Local/sfdx/plugins/node_modules/salesforce-alm/lib/scratchOrgApi');
   } else {
-    pluginPath = path.join(os.homedir(), '.local/share/heroku/plugins/node_modules/salesforce-alm/lib/scratchOrgApi')
+    pluginPath = path.join(os.homedir(), '.local/share/sfdx/plugins/node_modules/salesforce-alm/lib/scratchOrgApi')
   }
 
   return pluginPath;
