@@ -1,21 +1,6 @@
 const path = require('path');
 const os = require('os');
-const ScratchOrg = require(LoadScratchOrgApi());
 const forceUtils = require('../lib/forceUtils.js');
-
-function LoadScratchOrgApi() {
-
-  let pluginPath;
-  var isWin = /^win/.test(process.platform);
-
-  if (isWin) {
-    pluginPath = path.join(os.homedir(), '/AppData/Local/sfdx/plugins/node_modules/salesforce-alm/lib/scratchOrgApi');
-  } else {
-    pluginPath = path.join(os.homedir(), '.local/share/sfdx/plugins/node_modules/salesforce-alm/lib/scratchOrgApi')
-  }
-
-  return pluginPath;
-}
 
 (function () {
   'use strict';
@@ -30,8 +15,7 @@ function LoadScratchOrgApi() {
         name: 'targetusername',
         char: 'u',
         description: 'username for the target org',
-        hasValue: true,
-        required: true
+        hasValue: true
       },
       {
         name: 'connectedappname',
@@ -42,20 +26,14 @@ function LoadScratchOrgApi() {
       }],
     run(context) {
 
-
-      // LoadModules();
-
       const targetUsername = context.flags.targetusername;
       const connectedappname = context.flags.connectedappname;
 
-      forceUtils.getUsername(targetUsername, (username) => {
+      forceUtils.getOrg(targetUsername, (org) => {
+        org.force._getConnection(org, org.config).then((conn) => {
 
-        ScratchOrg.create(username).then(org => {
-          org.force._getConnection(org, org.config).then((conn) => {
-
-            conn.metadata.read('ConnectedApp', connectedappname, (readErr, metadataResult) => {
-              console.log(metadataResult); // eslint-disable-line no-console
-            });
+          conn.metadata.read('ConnectedApp', connectedappname, (readErr, metadataResult) => {
+            console.log(metadataResult); // eslint-disable-line no-console
           });
         });
       });
