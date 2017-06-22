@@ -1,25 +1,10 @@
 const path = require('path');
 const os = require('os');
 
-const ScratchOrg = require(LoadScratchOrgApi());
 const forceUtils = require('../lib/forceUtils.js');
 const forge = require('node-forge');
 const certs = require('../lib/certs.js');
 const fs = require('fs');
-
-function LoadScratchOrgApi() {
-
-  let pluginPath;
-  const isWin = /^win/.test(process.platform);
-
-  if (isWin) {
-    pluginPath = path.join(os.homedir(), '/AppData/Local/sfdx/plugins/node_modules/salesforce-alm/lib/scratchOrgApi');
-  } else {
-    pluginPath = path.join(os.homedir(), '.local/share/sfdx/plugins/node_modules/salesforce-alm/lib/scratchOrgApi');
-  }
-
-  return pluginPath;
-}
 
 (function () {
   'use strict';
@@ -33,8 +18,7 @@ function LoadScratchOrgApi() {
         name: 'targetusername',
         char: 'u',
         description: 'username or alias for the target org',
-        hasValue: true,
-        required: true
+        hasValue: true
       },
       {
         name: 'name',
@@ -97,7 +81,7 @@ function LoadScratchOrgApi() {
 
       const generatedConsumerSecret = forceUtils.getConsumerSecret();
 
-      forceUtils.getUsername(targetUsername, (username) => {
+      forceUtils.getOrg(targetUsername, (org) => {
 
         const pki = forge.pki;
         const keys = pki.rsa.generateKeyPair(2048);
@@ -123,47 +107,51 @@ function LoadScratchOrgApi() {
             });
           }
 
-          ScratchOrg.create(username).then((org) => {
-            org.force._getConnection(org, org.config).then((conn) => {
+          org.force._getConnection(org, org.config).then((conn) => {
 
-              let metadata;
+            let metadata;
 
-              if (createCerts) {
-                metadata = [{
-                  contactEmail: username,
-                  description: appDescription,
-                  fullName: connectedAppName,
-                  label: connectedAppName,
-                  oauthConfig: {
-                    callbackUrl: callbackurl,
-                    consumerSecret: generatedConsumerSecret,
-                    certificate: pubKey,
-                    scopes: appScopes
-                  }
-                }];
-              } else {
-                metadata = [{
-                  contactEmail: username,
-                  description: appDescription,
-                  fullName: connectedAppName,
-                  label: connectedAppName,
-                  oauthConfig: {
-                    callbackUrl: callbackurl,
-                    consumerSecret: generatedConsumerSecret,
-                    scopes: appScopes
-                  }
-                }];
-              }
-
-              conn.metadata.create('ConnectedApp', metadata, (createErr, results) => {
-                if (results.success) {
-                  conn.metadata.read('ConnectedApp', connectedAppName, (readErr, metadataResult) => {
-                    console.log(metadataResult); // eslint-disable-line no-console
-                  });
-                } else {
-                  console.log(results); // eslint-disable-line no-console
+            if (createCerts) {
+              metadata = [{
+                contactEmail: org.getName(),
+                description: appDescription,
+                fullName: connectedAppName,
+                label: connectedAppName,
+                oauthConfig: {
+                  callbackUrl: callbackurl,
+                  consumerSecret: generatedConsumerSecret,
+                  certificate: pubKey,
+                  scopes: appScopes
                 }
-              });
+              }];
+            } else {
+              metadata = [{
+                contactEmail: org.getName(),
+                description: appDescription,
+                fullName: connectedAppName,
+                label: connectedAppName,
+                oauthConfig: {
+                  callbackUrl: callbackurl,
+                  consumerSecret: generatedConsumerSecret,
+                  scopes: appScopes
+                }
+              }];
+            }
+
+            conn.metadata.create('ConnectedApp', metadata, (createErr, results) => {
+              if (createErr) {
+                console.log(createErr);
+              } else if (results.success) {
+                conn.metadata.read('ConnectedApp', connectedAppName, (readErr, metadataResult) => {
+                  if (readErr) {
+                    console.log(readErr);
+                  } else {
+                    console.log(metadataResult); // eslint-disable-line no-console
+                  }
+                });
+              } else {
+                console.log(results); // eslint-disable-line no-console
+              }
             });
           });
         });
