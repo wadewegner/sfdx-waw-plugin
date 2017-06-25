@@ -1,18 +1,14 @@
-const oss = require('./commands/oss.js');
-const manifestCreate = require('./commands/create.js');
-const connectedAppCreate = require('./commands/connectedapp_create.js');
-const connectedAppList = require('./commands/connectedapp_list.js');
+const oss = require('./commands/source/oss.js');
+const manifestCreate = require('./commands/source/create.js');
+const connectedAppCreate = require('./commands/connectedapp/connectedapp_create.js');
+const connectedAppList = require('./commands/connectedapp/connectedapp_list.js');
+const connectedAppTopic = require('./commands/connectedapp/connectedapp.js');
+const sourceTopic = require('./commands/source/source.js');
 
 (function () {
   'use strict';
 
-  exports.topics = [{
-    name: 'source',
-    description: 'source related command'
-  },{
-    name: 'connectedapp',
-    description: 'commands related to connected apps'
-  }];
+  exports.topics = [sourceTopic(),connectedAppTopic()];
 
   exports.namespace = {
     name: 'wadewegner',

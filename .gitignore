@@ -45,3 +45,7 @@ jspm_packages
 
 # Yarn Integrity file
 .yarn-integrity
+
+server.crt
+
+server.key
