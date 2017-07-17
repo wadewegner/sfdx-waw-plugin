@@ -9,7 +9,7 @@ const forceUtils = require('../lib/forceUtils.js');
     topic: 'connectedapp',
     command: 'list',
     description: 'List the connected apps in your org',
-    help: 'help text for wadewegner:connected`app:list',
+    help: 'help text for waw:connectedapp:list',
     flags: [
       {
         name: 'targetusername',

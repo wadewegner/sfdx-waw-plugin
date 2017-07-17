@@ -29,6 +29,7 @@
     "jsonfile": "^2.4.0",
     "node-forge": "^0.7.1",
     "recursive-readdir": "^2.1.1",
+    "request": "^2.81.0",
     "salesforce-alm": "^40.0.6",
     "url-exists": "^1.0.3"
   },

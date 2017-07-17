@@ -9,7 +9,7 @@ const jsonfile = require('jsonfile');
     topic: 'source',
     command: 'create',
     description: 'Create a manifest file for your open source project',
-    help: 'help text for wadewegner:source:create',
+    help: 'help text for waw:source:create',
     flags: [{
       name: 'path',
       char: 'p',
