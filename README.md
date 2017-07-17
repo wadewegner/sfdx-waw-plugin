@@ -20,15 +20,15 @@ A plugin for the SFDX CLI with a number of useful commands.
 
 ## Create a Connected App
 
-Simple example: `sfdx wadewegner:connectedapp:create -u <username|alias> -n <ConnectedAppName>`
+Simple example: `sfdx waw:connectedapp:create -u <username|alias> -n <ConnectedAppName>`
 
-With a self-signed certificate: `sfdx wadewegner:connectedapp:create -u <username|alias> -n <ConnectedAppName> -r`
+With a self-signed certificate: `sfdx waw:connectedapp:create -u <username|alias> -n <ConnectedAppName> -r`
 
 Lots of options available:
 
 ```
--> sfdx wadewegner:connectedapp:create --help
-Usage: sfdx wadewegner:connectedapp:create
+-> sfdx waw:connectedapp:create --help
+Usage: sfdx waw:connectedapp:create
 
 Create a connected app in your org
 
@@ -42,14 +42,34 @@ Create a connected app in your org
 
 ## List a Connected App
 
-List a Connected App: `sfdx wadewegner:connectedapp:list -u <username|alias> -n <ConnectedAppName>`
+List a Connected App: `sfdx waw:connectedapp:list -u <username|alias> -n <ConnectedAppName>`
+
+## Display the details of the project
+
+Display project: `sfdx waw:project:display`
+
+Display package directories: `sfdx waw:project:display -p`
+
+## Set a default package directory
+
+Set default package: `sfdx waw:project:pdir:set -p <directory>`
+
+## Create a package directory in the project file
+
+Create: `sfdx waw:project:pdir:create -p <directory>`
+
+Create as default: `sfdx waw:project:pdir:create -p <directory> -d`
+
+## Delete a package directory in the project file
+
+Delete: `sfdx waw:project:pdir:delete -p <directory>`
 
 ## Pull open source into your project
 
 1. Create a new workspace: `sfdx force:workspace:create -n yourname`
 
-2. Get open source: `sfdx wadewegner:source:oss -r WadeWegner/Strike-Components -p force-app/main/default/`
+2. Get open source: `sfdx waw:source:oss -r WadeWegner/Strike-Components -p force-app/main/default/`
 
 ## Create a manifest file to add to your open source project
 
-1. Create a manifest: `sfdx wadewegner:source:create -p force-app/main/default/`
+1. Create a manifest: `sfdx waw:source:create -p force-app/main/default/`
