@@ -9,7 +9,7 @@ const jsonfile = require('jsonfile');
   module.exports = {
     topic: 'project',
     command: 'pdir:create',
-    description: 'delete a package directory from the project definition',
+    description: 'create a package directory for the project definition',
     help: 'help text for waw:project:pdir:delete',
     flags: [{
       name: 'path',
@@ -52,7 +52,7 @@ const jsonfile = require('jsonfile');
             projectJson.packageDirectories.push({
               path: packageDirectoryPath
             });
-            
+
             if (setDefault) {
               for (let i = 0; i < projectJson.packageDirectories.length; i++) {
                 if (projectJson.packageDirectories[i].path === packageDirectoryPath) {
