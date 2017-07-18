@@ -1,4 +1,5 @@
 const path = require('path');
+const fs = require('fs');
 const almPath = path.dirname(require.resolve('salesforce-alm'));
 const Project = require(path.join(almPath, 'lib', 'projectDir'));
 const jsonfile = require('jsonfile');
@@ -43,12 +44,11 @@ const jsonfile = require('jsonfile');
 
             for (let i = 0; i < projectJson.packageDirectories.length; i++) {
               if (projectJson.packageDirectories[i].path === packageDirectoryPath) {
-                // delete projectJson.packageDirectories[i];
                 projectJson.packageDirectories.splice(i, 1);
               }
             }
 
-            jsonfile.writeFile(projectJsonPath, projectJson, (writeErr) => {
+            fs.writeFile(projectJsonPath, JSON.stringify(projectJson, null, 2), (writeErr) => {
               if (writeErr) {
                 console.error(writeErr);
               } else {

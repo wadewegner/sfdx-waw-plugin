@@ -1,4 +1,5 @@
 const path = require('path');
+const fs = require('fs');
 const almPath = path.dirname(require.resolve('salesforce-alm'));
 const Project = require(path.join(almPath, 'lib', 'projectDir'));
 const jsonfile = require('jsonfile');
@@ -63,7 +64,7 @@ const jsonfile = require('jsonfile');
               }
             }
 
-            jsonfile.writeFile(projectJsonPath, projectJson, (writeErr) => {
+            fs.writeFile(projectJsonPath, JSON.stringify(projectJson, null, 2), (writeErr) => {
               if (writeErr) {
                 console.error(writeErr);
               } else {
