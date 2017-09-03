@@ -10,7 +10,7 @@ const {
     topic: 'apex',
     command: 'log:latest',
     description: 'get the latest apex log',
-    help: 'help text for waw:log:latest',
+    help: 'help text for waw:apex:log:latest',
     flags: [{
       name: 'targetusername',
       char: 'u',

@@ -12,25 +12,29 @@ const traceList = require('./commands/trace_list.js');
 const traceCreate = require('./commands/trace_create.js');
 const traceDelete = require('./commands/trace_delete.js');
 const apexLogLatest = require('./commands/apex_log_latest.js');
+const staticCreate = require('./commands/static_create.js');
 
 (function () {
   'use strict';
 
   exports.topics = [{
     name: 'source',
-    description: 'source related command'
+    description: 'commands for source'
   },{
     name: 'connectedapp',
-    description: 'commands related to connected apps'
+    description: 'commands for connected apps'
   },{
     name: 'project',
-    description: 'commands related to projects'
+    description: 'commands for projects'
   },{
     name: 'trace',
     description: 'commands for trace flags'
   },{
     name: 'apex',
-    description: 'commands for apex flags'
+    description: 'commands for apex'
+  },{
+    name: 'static',
+    description: 'commands for static resources'
   }];
 
   exports.namespace = {
@@ -50,7 +54,8 @@ const apexLogLatest = require('./commands/apex_log_latest.js');
     traceList,
     traceCreate,
     traceDelete,
-    apexLogLatest
+    apexLogLatest,
+    staticCreate
   ];
 
 }());
