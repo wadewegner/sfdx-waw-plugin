@@ -1,6 +1,6 @@
 {
   "name": "sfdx-oss-plugin",
-  "version": "0.4.0",
+  "version": "0.5.0",
   "description": "A plugin for the SFDX CLI that makes it easy to consume open source code.",
   "main": "index.js",
   "author": "Wade Wegner @WadeWegner",
