@@ -73,3 +73,18 @@ Delete: `sfdx waw:project:pdir:delete -p <directory>`
 ## Create a manifest file to add to your open source project
 
 1. Create a manifest: `sfdx waw:source:create -p force-app/main/default/`
+
+## List all trace flags
+
+`sfdx waw:trace:list`
+`sfdx waw:trace:list -u <targetusername>`
+
+## Create a trace flag
+
+`sfdx waw:trace:create`
+`sfdx waw:trace:create -u <targetusername>`
+
+## Delete the trace flag
+
+`sfdx waw:trace:delete`
+`sfdx waw:trace:delete -u <targetusername>`
