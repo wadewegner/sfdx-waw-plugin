@@ -11,6 +11,7 @@ const connectedAppList = require('./commands/connectedapp_list.js');
 const traceList = require('./commands/trace_list.js');
 const traceCreate = require('./commands/trace_create.js');
 const traceDelete = require('./commands/trace_delete.js');
+const apexLogLatest = require('./commands/apex_log_latest.js');
 
 (function () {
   'use strict';
@@ -27,6 +28,9 @@ const traceDelete = require('./commands/trace_delete.js');
   },{
     name: 'trace',
     description: 'commands for trace flags'
+  },{
+    name: 'apex',
+    description: 'commands for apex flags'
   }];
 
   exports.namespace = {
@@ -45,7 +49,8 @@ const traceDelete = require('./commands/trace_delete.js');
     connectedAppList,
     traceList,
     traceCreate,
-    traceDelete
+    traceDelete,
+    apexLogLatest
   ];
 
 }());
