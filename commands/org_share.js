@@ -5,10 +5,10 @@ const request = require('request');
   'use strict';
 
   module.exports = {
-    topic: 'user',
-    command: 'org:provision',
-    description: 'share a scratch org with a different user',
-    help: 'help text for force:user:org:create',
+    topic: 'org',
+    command: 'share',
+    description: 'share a scratch org with someone via email',
+    help: 'help text for waw:org:share',
     flags: [{
         name: 'targetusername',
         char: 'u',

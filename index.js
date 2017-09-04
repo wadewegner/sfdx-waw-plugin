@@ -11,7 +11,7 @@ const traceCreate = require('./commands/trace_create.js');
 const traceDelete = require('./commands/trace_delete.js');
 const apexLogLatest = require('./commands/apex_log_latest.js');
 const staticCreate = require('./commands/static_create.js');
-const userOrgProvision = require('./commands/user_org_provision.js');
+const orgShare = require('./commands/org_share.js');
 
 (function () {
   'use strict';
@@ -35,7 +35,7 @@ const userOrgProvision = require('./commands/user_org_provision.js');
     name: 'static',
     description: 'commands for static resources'
   },{
-    name: 'user',
+    name: 'org',
     description: 'commands for org resources'
   }];
 
@@ -58,7 +58,7 @@ const userOrgProvision = require('./commands/user_org_provision.js');
     traceDelete,
     apexLogLatest,
     staticCreate,
-    userOrgProvision
+    orgShare
   ];
 
 }());
