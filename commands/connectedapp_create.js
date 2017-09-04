@@ -28,6 +28,13 @@ const fs = require('fs');
         required: true
       },
       {
+        name: 'label',
+        char: 'l',
+        description: 'connected app label',
+        hasValue: true,
+        required: false
+      },
+      {
         name: 'certificate',
         char: 'r',
         description: 'create and register a certificate',
@@ -38,7 +45,7 @@ const fs = require('fs');
       {
         name: 'callbackurl',
         char: 'c',
-        description: 'callbackUrl (default is "sfdx://success")',        
+        description: 'callbackUrl (default is "sfdx://success")',
         hasValue: true,
         required: false
       },
@@ -62,6 +69,12 @@ const fs = require('fs');
 
       const targetUsername = context.flags.targetusername;
       const connectedAppName = context.flags.name;
+      let connectedAppLabel = context.flags.label;
+
+      if (context.flags.label === null || context.flags.label === undefined) {
+        connectedAppLabel = connectedAppName;
+      }
+
       let callbackurl = context.flags.callbackurl;
       if (!callbackurl) {
         callbackurl = 'sfdx://success';
@@ -116,7 +129,7 @@ const fs = require('fs');
                 contactEmail: org.getName(),
                 description: appDescription,
                 fullName: connectedAppName,
-                label: connectedAppName,
+                label: connectedAppLabel,
                 oauthConfig: {
                   callbackUrl: callbackurl,
                   consumerSecret: generatedConsumerSecret,
@@ -129,7 +142,7 @@ const fs = require('fs');
                 contactEmail: org.getName(),
                 description: appDescription,
                 fullName: connectedAppName,
-                label: connectedAppName,
+                label: connectedAppLabel,
                 oauthConfig: {
                   callbackUrl: callbackurl,
                   consumerSecret: generatedConsumerSecret,
