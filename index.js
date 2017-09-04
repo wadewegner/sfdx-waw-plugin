@@ -1,6 +1,4 @@
-const
-oss
-= require('./commands/oss.js');
+const oss = require('./commands/oss.js');
 const manifestCreate = require('./commands/create.js');
 const projectDisplay = require('./commands/project_display.js');
 const projectPDirSet = require('./commands/project_pdir_set.js');
@@ -13,6 +11,7 @@ const traceCreate = require('./commands/trace_create.js');
 const traceDelete = require('./commands/trace_delete.js');
 const apexLogLatest = require('./commands/apex_log_latest.js');
 const staticCreate = require('./commands/static_create.js');
+const userOrgProvision = require('./commands/user_org_provision.js');
 
 (function () {
   'use strict';
@@ -35,6 +34,9 @@ const staticCreate = require('./commands/static_create.js');
   },{
     name: 'static',
     description: 'commands for static resources'
+  },{
+    name: 'user',
+    description: 'commands for org resources'
   }];
 
   exports.namespace = {
@@ -55,7 +57,8 @@ const staticCreate = require('./commands/static_create.js');
     traceCreate,
     traceDelete,
     apexLogLatest,
-    staticCreate
+    staticCreate,
+    userOrgProvision
   ];
 
 }());
