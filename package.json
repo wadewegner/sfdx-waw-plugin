@@ -1,12 +1,12 @@
 {
-  "name": "sfdx-oss-plugin",
+  "name": "sfdx-waw-plugin",
   "version": "0.7.0",
-  "description": "A plugin for the SFDX CLI that makes it easy to consume open source code.",
+  "description": "A plugin for the Salesforce CLI built by Wade Wegner and containing a lot of helpful commands.",
   "main": "index.js",
   "author": "Wade Wegner @WadeWegner",
-  "repository": "WadeWegner/sfdx-oss-plugin",
+  "repository": "WadeWegner/sfdx-waw-plugin",
   "bugs": {
-    "url": "https://github.com/wadewegner/sfdx-oss-plugin/issues"
+    "url": "https://github.com/wadewegner/sfdx-waw-plugin/issues"
   },
   "scripts": {
     "test": "node_modules/.bin/mocha",
