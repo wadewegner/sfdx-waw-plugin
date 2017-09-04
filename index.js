@@ -1,5 +1,5 @@
-const oss = require('./commands/oss.js');
-const manifestCreate = require('./commands/create.js');
+const sourceOss = require('./commands/source_oss.js');
+const sourceCreate = require('./commands/source_create.js');
 const projectDisplay = require('./commands/project_display.js');
 const projectPDirSet = require('./commands/project_pdir_set.js');
 const projectPDirCreate = require('./commands/project_pdir_create.js');
@@ -45,8 +45,8 @@ const orgShare = require('./commands/org_share.js');
   };
 
   exports.commands = [
-    oss, 
-    manifestCreate, 
+    sourceOss, 
+    sourceCreate, 
     projectDisplay, 
     projectPDirSet,
     projectPDirCreate,
