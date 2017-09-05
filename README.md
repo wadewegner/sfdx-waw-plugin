@@ -1,6 +1,6 @@
-# sfdx-oss-plugins [![Build Status](https://travis-ci.org/wadewegner/sfdx-oss-plugin.svg?branch=master)](https://travis-ci.org/wadewegner/sfdx-oss-plugin)
+# sfdx-waw-plugins [![Build Status](https://travis-ci.org/wadewegner/sfdx-waw-plugin.svg?branch=master)](https://travis-ci.org/wadewegner/sfdx-waw-plugin)
 
-A plugin for the SFDX CLI with a number of useful commands.
+A plugin for the Salesforce CLI built by Wade Wegner and containing a lot of helpful commands.
 
 ## Setup
 
@@ -8,7 +8,7 @@ A plugin for the SFDX CLI with a number of useful commands.
 
 1. Install the SDFX CLI.
 
-2. Clone the repository: `git clone git@github.com:wadewegner/sfdx-oss-plugin.git`
+2. Clone the repository: `git clone git@github.com:wadewegner/sfdx-waw-plugin.git`
 
 3. Install npm modules: `npm install`
 
@@ -16,7 +16,7 @@ A plugin for the SFDX CLI with a number of useful commands.
 
 ### Install as plugin
 
-1. Install plugin: `sfdx plugins:install sfdx-oss-plugin`
+1. Install plugin: `sfdx plugins:install sfdx-waw-plugin`
 
 ## Create a Connected App
 
