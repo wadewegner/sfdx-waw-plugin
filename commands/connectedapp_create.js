@@ -63,6 +63,13 @@ const fs = require('fs');
         description: 'scopes separated by commas (defaut: Basic, Api, Web, RefreshToken; valid: Basic, Api, Web, Full, Chatter, CustomApplications, RefreshToken, OpenID, CustomPermissions, Wave, Eclair)',
         hasValue: true,
         required: false
+      },
+      {
+        name: 'contactemail',
+        char: 'e',
+        description: '',
+        hasValue: true,
+        required: false
       }
     ],
     run(context) {
@@ -70,6 +77,7 @@ const fs = require('fs');
       const targetUsername = context.flags.targetusername;
       const connectedAppName = context.flags.name;
       let connectedAppLabel = context.flags.label;
+      let contactEmail = context.flags.contactemail;
 
       if (context.flags.label === null || context.flags.label === undefined) {
         connectedAppLabel = connectedAppName;
@@ -99,6 +107,7 @@ const fs = require('fs');
         const pki = forge.pki;
         const keys = pki.rsa.generateKeyPair(2048);
         const privKey = forge.pki.privateKeyToPem(keys.privateKey);
+        contactEmail = contactEmail || org.getName();
 
         certs.getSelfSignedCertificate(pki, keys, (cert) => {
 
@@ -126,7 +135,7 @@ const fs = require('fs');
 
             if (createCerts) {
               metadata = [{
-                contactEmail: org.getName(),
+                contactEmail,
                 description: appDescription,
                 fullName: connectedAppName,
                 label: connectedAppLabel,
@@ -139,7 +148,7 @@ const fs = require('fs');
               }];
             } else {
               metadata = [{
-                contactEmail: org.getName(),
+                contactEmail,
                 description: appDescription,
                 fullName: connectedAppName,
                 label: connectedAppLabel,
