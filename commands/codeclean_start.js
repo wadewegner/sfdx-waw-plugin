@@ -44,11 +44,13 @@ const request = require('request');
 
             if (error) {
               console.log('ERROR', error);
+              // TODO: exit process
             }
 
-            if (!error && response.statusCode == 200) {
+            // TODO: handle expired tokens better
+            // TODO: handle errors better
+
               console.log(JSON.stringify(body));
-            }
           }
         );
       });

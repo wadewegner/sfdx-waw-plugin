@@ -13,6 +13,8 @@ const apexLogLatest = require('./commands/apex_log_latest.js');
 const staticCreate = require('./commands/static_create.js');
 const orgShare = require('./commands/org_share.js');
 const codeCleanStart = require('./commands/codeclean_start.js');
+const codeCleanCheck = require('./commands/codeclean_check.js');
+const codeCleanResults = require('./commands/codeclean_results.js');
 
 (function () {
   'use strict';
@@ -63,7 +65,9 @@ const codeCleanStart = require('./commands/codeclean_start.js');
     apexLogLatest,
     staticCreate,
     orgShare,
-    codeCleanStart
+    codeCleanStart,
+    codeCleanCheck,
+    codeCleanResults
   ];
 
 }());
