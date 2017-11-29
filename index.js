@@ -12,6 +12,7 @@ const traceDelete = require('./commands/trace_delete.js');
 const apexLogLatest = require('./commands/apex_log_latest.js');
 const staticCreate = require('./commands/static_create.js');
 const orgShare = require('./commands/org_share.js');
+const codeCleanStart = require('./commands/codeclean_start.js');
 
 (function () {
   'use strict';
@@ -37,6 +38,9 @@ const orgShare = require('./commands/org_share.js');
   },{
     name: 'org',
     description: 'commands for org resources'
+  },{
+    name: 'codeclean',
+    description: 'commands for Ben Edwards Code Clean service'
   }];
 
   exports.namespace = {
@@ -58,7 +62,8 @@ const orgShare = require('./commands/org_share.js');
     traceDelete,
     apexLogLatest,
     staticCreate,
-    orgShare
+    orgShare,
+    codeCleanStart
   ];
 
 }());
