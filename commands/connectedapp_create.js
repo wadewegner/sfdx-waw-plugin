@@ -169,6 +169,7 @@ const fs = require('fs');
                     console.log(readErr);
                   } else {
                     console.log(metadataResult); // eslint-disable-line no-console
+                    console.log('secret', generatedConsumerSecret);
                   }
                 });
               } else {
