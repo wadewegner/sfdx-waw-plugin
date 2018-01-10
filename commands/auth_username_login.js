@@ -1,17 +1,9 @@
 const path = require('path');
+const jsforce = require('jsforce');
+
 
 const almPath = path.dirname(require.resolve('salesforce-alm'));
 const Org = require(path.join(almPath, 'lib', 'scratchOrgApi'));
-const Force = require(path.join(almPath, 'lib', 'force'));
-const ConfigApi = require(path.join(almPath, 'lib', 'configApi')).Config;
-
-const jsforce = require('jsforce');
-
-const defaultConnectedAppInfo = require(path.join(
-  almPath,
-  'lib',
-  'defaultConnectedApp'
-));
 
 (function() {
   'use strict';
@@ -54,10 +46,6 @@ const defaultConnectedAppInfo = require(path.join(
       }
 
       const saveAsDefault = false;
-
-      const oauthConfig = [];
-      oauthConfig.clientId = defaultConnectedAppInfo.clientId;
-      oauthConfig.clientSecret = defaultConnectedAppInfo.clientSecret;
 
       const conn = new jsforce.Connection({
         // you can change loginUrl to connect to sandbox or prerelease env.
