@@ -15,6 +15,7 @@ const orgShare = require('./commands/org_share.js');
 const codeCleanStart = require('./commands/codeclean_start.js');
 const codeCleanCheck = require('./commands/codeclean_check.js');
 const codeCleanResults = require('./commands/codeclean_results.js');
+const authUsernameLogin = require('./commands/auth_username_login.js');
 
 (function () {
   'use strict';
@@ -43,6 +44,9 @@ const codeCleanResults = require('./commands/codeclean_results.js');
   },{
     name: 'codeclean',
     description: 'commands for Ben Edwards Code Clean service'
+  },{
+    name: 'auth',
+    description: 'command for authorizing an org for use with the Salesforce CLI'
   }];
 
   exports.namespace = {
@@ -67,7 +71,8 @@ const codeCleanResults = require('./commands/codeclean_results.js');
     orgShare,
     codeCleanStart,
     codeCleanCheck,
-    codeCleanResults
+    codeCleanResults,
+    authUsernameLogin
   ];
 
 }());
