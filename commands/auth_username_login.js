@@ -1,7 +1,6 @@
 const path = require('path');
 const jsforce = require('jsforce');
 
-
 const almPath = path.dirname(require.resolve('salesforce-alm'));
 const Org = require(path.join(almPath, 'lib', 'scratchOrgApi'));
 
@@ -64,7 +63,7 @@ const Org = require(path.join(almPath, 'lib', 'scratchOrgApi'));
         orgSaveData.username = username;
         orgSaveData.loginUrl = instanceUrl;
 
-        const orgApi = new Org(this.force);
+        const orgApi = new Org();
 
         console.log(orgSaveData);
 
