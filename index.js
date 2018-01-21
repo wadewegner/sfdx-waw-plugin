@@ -16,6 +16,7 @@ const codeCleanStart = require('./commands/codeclean_start.js');
 const codeCleanCheck = require('./commands/codeclean_check.js');
 const codeCleanResults = require('./commands/codeclean_results.js');
 const authUsernameLogin = require('./commands/auth_username_login.js');
+const workbenchOpen = require('./commands/workbench_open.js');
 
 (function () {
   'use strict';
@@ -47,6 +48,9 @@ const authUsernameLogin = require('./commands/auth_username_login.js');
   },{
     name: 'auth',
     description: 'command for authorizing an org for use with the Salesforce CLI'
+  },{
+    name: 'workbench',
+    description: 'commands for working with Workbench'
   }];
 
   exports.namespace = {
@@ -72,7 +76,8 @@ const authUsernameLogin = require('./commands/auth_username_login.js');
     codeCleanStart,
     codeCleanCheck,
     codeCleanResults,
-    authUsernameLogin
+    authUsernameLogin,
+    workbenchOpen
   ];
 
 }());
