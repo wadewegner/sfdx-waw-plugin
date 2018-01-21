@@ -44,10 +44,10 @@ const workbenchOpen = require('./commands/workbench_open.js');
     description: 'commands for org resources'
   },{
     name: 'codeclean',
-    description: 'commands for Ben Edwards Code Clean service'
+    description: 'commands for the code clean service from Ben Edwards'
   },{
     name: 'auth',
-    description: 'command for authorizing an org for use with the Salesforce CLI'
+    description: 'commands for authorizing an org for use with the Salesforce CLI'
   },{
     name: 'workbench',
     description: 'commands for working with Workbench'
