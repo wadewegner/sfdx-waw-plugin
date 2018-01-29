@@ -168,8 +168,11 @@ const fs = require('fs');
                   if (readErr) {
                     console.log(readErr);
                   } else {
+
+                    metadataResult.oauthConfig.secret = generatedConsumerSecret;
+
                     console.log(metadataResult); // eslint-disable-line no-console
-                    console.log('secret', generatedConsumerSecret);
+                    // console.log('secret', generatedConsumerSecret);
                   }
                 });
               } else {
