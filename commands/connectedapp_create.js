@@ -169,7 +169,7 @@ const fs = require('fs');
                     console.log(readErr);
                   } else {
 
-                    metadataResult.oauthConfig.secret = generatedConsumerSecret;
+                    metadataResult.oauthConfig.consumerSecret = generatedConsumerSecret;
 
                     console.log(JSON.stringify(metadataResult)); // eslint-disable-line no-console
                     // console.log('secret', generatedConsumerSecret);
