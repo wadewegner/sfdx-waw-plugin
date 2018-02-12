@@ -17,6 +17,7 @@ const codeCleanCheck = require('./commands/codeclean_check.js');
 const codeCleanResults = require('./commands/codeclean_results.js');
 const authUsernameLogin = require('./commands/auth_username_login.js');
 const workbenchOpen = require('./commands/workbench_open.js');
+const package2ProjectUpdate = require('./commands/package2_project_update.js');
 
 (function () {
   'use strict';
@@ -51,6 +52,9 @@ const workbenchOpen = require('./commands/workbench_open.js');
   },{
     name: 'workbench',
     description: 'commands for working with Workbench'
+  },{
+    name: 'package2',
+    description: 'commands for working with 2GPs'
   }];
 
   exports.namespace = {
@@ -77,7 +81,8 @@ const workbenchOpen = require('./commands/workbench_open.js');
     codeCleanCheck,
     codeCleanResults,
     authUsernameLogin,
-    workbenchOpen
+    workbenchOpen,
+    package2ProjectUpdate
   ];
 
 }());
