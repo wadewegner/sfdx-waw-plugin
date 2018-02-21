@@ -28,6 +28,11 @@ const jsonfile = require('jsonfile');
       char: 'n',
       description: 'version number of package',
       hasValue: true
+    }, {
+      name: 'versionname',
+      char: 'v',
+      description: 'version name of package',
+      hasValue: true
     }],
     run(context) {
 
@@ -55,6 +60,7 @@ const jsonfile = require('jsonfile');
 
             const packageId = context.flags.id;
             const versionNumber = context.flags.versionnumber;
+            const versionName = context.flags.versionname;
             let updated = false;
 
             for (let i = 0; i < projectJson.packageDirectories.length; i++) {
@@ -67,6 +73,10 @@ const jsonfile = require('jsonfile');
                 if (versionNumber) {
                   updated = true;
                   projectJson.packageDirectories[i].versionNumber = versionNumber;
+                }
+                if (versionName) {
+                  updated = true;
+                  projectJson.packageDirectories[i].versionName = versionName;
                 }
               }
             }
