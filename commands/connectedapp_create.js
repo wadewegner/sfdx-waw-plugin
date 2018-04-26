@@ -70,6 +70,36 @@ const fs = require('fs');
         description: '',
         hasValue: true,
         required: false
+      },
+      {
+        name: 'canvasUrl',
+        char: 'i',
+        description: '',
+        hasValue: true,
+        required: false
+      },
+      {
+        name: 'accessMethod',
+        char: 'm',
+        description: '',
+        hasValue: true,
+        required: false
+      },
+      {
+        //'Chatter', 'ChatterFeed', 'MobileNav', 'PageLayout', 'Publisher', 'Visualforce'
+        name: 'locations',
+        char: 'f',
+        description: '',
+        hasValue: true,
+        required: false
+      },
+      {
+        //PersonalEnabled
+        name: 'options',
+        char: 'o',
+        description: '',
+        hasValue: true,
+        required: false
       }
     ],
     run(context) {
@@ -78,6 +108,11 @@ const fs = require('fs');
       const connectedAppName = context.flags.name;
       let connectedAppLabel = context.flags.label;
       let contactEmail = context.flags.contactemail;
+
+      let canvasUrl = context.flags.canvasUrl;
+      let accessMethod = context.flags.accessMethod;
+      let locations = context.flags.locations;
+      let options = context.flags.options;
 
       if (context.flags.label === null || context.flags.label === undefined) {
         connectedAppLabel = connectedAppName;
@@ -98,6 +133,14 @@ const fs = require('fs');
         appScopes = origScopes.split(',');
       } else {
         appScopes = ['Basic', 'Api', 'Web', 'RefreshToken'];
+      }
+
+      let canvasConfig = {};
+      if (canvasUrl != null){
+        canvasConfig.canvasUrl = canvasUrl;
+        canvasConfig.accessMethod = accessMethod;
+        canvasConfig.locations = locations.split(',');
+        canvasConfig.options = options.split(',');
       }
 
       const generatedConsumerSecret = forceUtils.getConsumerSecret();
@@ -158,6 +201,9 @@ const fs = require('fs');
                   scopes: appScopes
                 }
               }];
+            }
+            if (canvasUrl != null){
+              metadata[0]['canvasConfig'] = canvasConfig;
             }
 
             conn.metadata.create('ConnectedApp', metadata, (createErr, results) => {
