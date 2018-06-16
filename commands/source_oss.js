@@ -32,6 +32,13 @@ const files = require('../lib/files.js');
         hasValue: true
       },
       {
+        name: 'tag',
+        char: 't',
+        description: 'Git repository tag',
+        required: false,
+        hasValue: true
+      },
+      {
         name: 'server',
         char: 's',
         description: 'Git host server url (default is "github.com")',
@@ -61,6 +68,11 @@ const files = require('../lib/files.js');
       let branch = context.flags.branch;
       if (!branch) {
         branch = 'master';
+      }
+
+      let tag = context.flags.tag;
+      if (!tag) {
+        branch = tag;
       }
 
       // check to ensure Github repo exists
