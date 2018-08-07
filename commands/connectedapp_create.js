@@ -100,6 +100,14 @@ const fs = require('fs');
         description: '',
         hasValue: true,
         required: false
+      },
+      {
+        //namespace
+        name: 'namespace',
+        char: 'p',
+        description: '',
+        hasValue: true,
+        required: false
       }
     ],
     run(context) {
@@ -113,6 +121,7 @@ const fs = require('fs');
       let accessMethod = context.flags.accessMethod;
       let locations = context.flags.locations;
       let options = context.flags.options;
+      let namespace = context.flags.namespace;
 
       if (context.flags.label === null || context.flags.label === undefined) {
         connectedAppLabel = connectedAppName;
@@ -207,17 +216,18 @@ const fs = require('fs');
             }
 
             conn.metadata.create('ConnectedApp', metadata, (createErr, results) => {
+              console.log('## result: ', JSON.stringify(results));
               if (createErr) {
                 console.log(createErr);
               } else if (results.success) {
+                if (namespace != null){
+                  connectedAppName = namespace + '__' + connectedAppName;
+                }
                 conn.metadata.read('ConnectedApp', connectedAppName, (readErr, metadataResult) => {
                   if (readErr) {
                     console.log(readErr);
                   } else {
-
                     metadataResult.oauthConfig.consumerSecret = generatedConsumerSecret;
-
-                    console.log(JSON.stringify(metadataResult)); // eslint-disable-line no-console
                     // console.log('secret', generatedConsumerSecret);
                   }
                 });
