@@ -216,7 +216,6 @@ const fs = require('fs');
             }
 
             conn.metadata.create('ConnectedApp', metadata, (createErr, results) => {
-              console.log('## result: ', JSON.stringify(results));
               if (createErr) {
                 console.log(createErr);
               } else if (results.success) {
