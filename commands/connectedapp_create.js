@@ -113,7 +113,7 @@ const fs = require('fs');
     run(context) {
 
       const targetUsername = context.flags.targetusername;
-      const connectedAppName = context.flags.name;
+      let connectedAppName = context.flags.name;
       let connectedAppLabel = context.flags.label;
       let contactEmail = context.flags.contactemail;
 
