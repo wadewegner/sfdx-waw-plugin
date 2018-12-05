@@ -108,6 +108,14 @@ const fs = require('fs');
         description: '',
         hasValue: true,
         required: false
+      },
+      {
+        //consumer secret
+        name: 'consumerSecret',
+        char: 'q',
+        description: 'Consumer secret for connected app',
+        hasValue: true,
+        required: false
       }
     ],
     run(context) {
@@ -122,9 +130,14 @@ const fs = require('fs');
       let locations = context.flags.locations;
       let options = context.flags.options;
       let namespace = context.flags.namespace;
+      let consumerSecret = context.flags.consumerSecret;
 
       if (context.flags.label === null || context.flags.label === undefined) {
         connectedAppLabel = connectedAppName;
+      }
+
+      if (consumerSecret === null || consumerSecret === undefined){
+        consumerSecret = forceUtils.getConsumerSecret();
       }
 
       let callbackurl = context.flags.callbackurl;
@@ -151,8 +164,6 @@ const fs = require('fs');
         canvasConfig.locations = locations.split(',');
         canvasConfig.options = options.split(',');
       }
-
-      const generatedConsumerSecret = forceUtils.getConsumerSecret();
 
       forceUtils.getOrg(targetUsername, (org) => {
 
@@ -193,7 +204,7 @@ const fs = require('fs');
                 label: connectedAppLabel,
                 oauthConfig: {
                   callbackUrl: callbackurl,
-                  consumerSecret: generatedConsumerSecret,
+                  consumerSecret: consumerSecret,
                   certificate: pubKey,
                   scopes: appScopes
                 }
@@ -206,7 +217,7 @@ const fs = require('fs');
                 label: connectedAppLabel,
                 oauthConfig: {
                   callbackUrl: callbackurl,
-                  consumerSecret: generatedConsumerSecret,
+                  consumerSecret: consumerSecret,
                   scopes: appScopes
                 }
               }];
@@ -226,7 +237,7 @@ const fs = require('fs');
                   if (readErr) {
                     console.log(readErr);
                   } else {
-                    metadataResult.oauthConfig.consumerSecret = generatedConsumerSecret;
+                    metadataResult.oauthConfig.consumerSecret = consumerSecret;
 
                     console.log(JSON.stringify(metadataResult)); // eslint-disable-line no-console
                     // console.log('secret', generatedConsumerSecret);
