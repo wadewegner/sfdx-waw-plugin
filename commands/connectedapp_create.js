@@ -228,14 +228,14 @@ const fs = require('fs');
 
             conn.metadata.create('ConnectedApp', metadata, (createErr, results) => {
               if (createErr) {
-                console.log(createErr);
+                console.log(JSON.stringify(createErr));
               } else if (results.success) {
                 if (namespace != null){
                   connectedAppName = namespace + '__' + connectedAppName;
                 }
                 conn.metadata.read('ConnectedApp', connectedAppName, (readErr, metadataResult) => {
                   if (readErr) {
-                    console.log(readErr);
+                    console.log(JSON.stringify(readErr));
                   } else {
                     metadataResult.oauthConfig.consumerSecret = consumerSecret;
 
@@ -244,7 +244,7 @@ const fs = require('fs');
                   }
                 });
               } else {
-                console.log(results); // eslint-disable-line no-console
+                console.log(JSON.stringify(results)); // eslint-disable-line no-console
               }
             });
           });

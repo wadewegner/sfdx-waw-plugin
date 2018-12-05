@@ -33,7 +33,7 @@ const forceUtils = require('../lib/forceUtils.js');
         org.force._getConnection(org, org.config).then((conn) => {
 
           conn.metadata.read('ConnectedApp', connectedappname, (readErr, metadataResult) => {
-            console.log(metadataResult); // eslint-disable-line no-console
+            console.log(JSON.stringify(metadataResult)); // eslint-disable-line no-console
           });
         });
       });
