@@ -1,0 +1,148 @@
+{
+  "apex": {
+    "log": {
+      "latest": {
+        "description": "get the latest apex log"
+      }
+    }
+  },
+  "auth": {
+    "username": {
+      "login": {
+        "description": "authorize an org using the username password flow",
+        "flags": {
+          "instanceurl": "the login URL of the instance the org lives on",
+          "username": "username for org",
+          "password": "password for org - it is recommended to not set this flag and use the prompt"
+        }
+      }
+    }
+  },
+  "codeclean": {
+    "flags": {
+      "id": "job id for the code clean service"
+    },
+    "check": {
+      "description": "check the status of the code clean service running against your org"
+    },
+    "results": {
+      "description": "get the results of the code clean service running against your org"
+    },
+    "start": {
+      "description": "start the code clean service against your org"
+    }
+  },
+  "connectedapp": {
+    "create": {
+      "description": "create a connected app in your org",
+      "flags": {
+        "name": "connected app name",
+        "label": "connected app label",
+        "certificate": "create and register a certificate",
+        "callbackurl": "callbackUrl (default is \"sfdx://success\")",
+        "description": "connected app description",
+        "scopes": "scopes separated by commas (defaut: Basic, Api, Web, RefreshToken; valid: Basic, Api, Web, Full, Chatter, CustomApplications, RefreshToken, OpenID, CustomPermissions, Wave, Eclair)",
+        "contactemail": "connected app contact email"
+      }
+    },
+    "list": {
+      "description": "list the connected apps in your org",
+      "flags": {
+        "connectedappname": "connected app name"
+      }
+    }
+  },
+  "org": {
+    "share": {
+      "description": "share a scratch org with someone via email",
+      "flags": {
+        "emailaddress": "email address of the scratch org recipient"
+      }
+    }
+  },
+  "package2": {
+    "update": {
+      "description": "update the sfdx-project.json with package2 info",
+      "flags": {
+        "packagedirectory": "package directory getting updated",
+        "id": "id of package",
+        "versionnumber": "version number of package",
+        "versionname": "version name of package"
+      }
+    }
+  },
+  "project": {
+    "display": {
+      "description": "",
+      "flags": {
+        "packagedirectories": "list package directories"
+      }
+    },
+    "pdir": {
+      "flags": {
+        "path": "path for default package directory"
+      },
+      "create": {
+        "description": "create a package directory for the project definition",
+        "flags": {
+          "default": "sets default"
+        }
+      },
+      "delete": {
+        "description": "delete a package directory from the project definition"
+      },
+      "set": {
+        "description": "set the default package directory"
+      }
+    }
+  },
+  "source": {
+    "create": {
+      "description": "create a manifest file for your open source project",
+      "flags": {
+        "path": "path for your source"
+      }
+    },
+    "oss": {
+      "description": "sasily pulls in open source from a Github repository",
+      "flags": {
+        "repository": "git repository (e.g. \"wadewegner/Strike-Components\")",
+        "path": "path for downloaded source",
+        "branch": "git repository branch",
+        "tag": "git repository tag",
+        "server": "git host server url"
+      }
+    }
+  },
+  "static": {
+    "create": {
+      "description": "create a generic static resource",
+      "flags": {
+        "name": "static resource name",
+        "type": "static resource type (application/javascript, text/javascript, application/xml, text/xml, text/css, text/plain, etc.)",
+        "outputdir": "folder for saving the created files"
+      }
+    }
+  },
+  "trace": {
+    "create": {
+      "description": "create trace flag"
+    },
+    "delete": {
+      "description": "delete trace flag"
+    },
+    "list": {
+      "description": "list trace flags"
+    }
+  },
+  "workbench": {
+    "open": {
+      "description": "open workbench using the current target username",
+      "flags": {
+        "targetworkbenchurl": "target workbench url",
+        "setdefaultworkbenchurl": "store the workbench url as default",
+        "urlonly": "urlonly"
+      }
+    }
+  }
+}
