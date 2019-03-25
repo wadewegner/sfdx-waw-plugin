@@ -31,13 +31,13 @@ export default class ConnectedAppCreate extends SfdxCommand {
     branch: flags.string({
       char: 'b',
       description: messages.getMessage('source.oss.flags.branch'),
-      default: 'master'
-      // exclusive: ['tag']
+      default: 'master',
+      exclusive: ['tag']
     }),
     tag: flags.string({
       char: 't',
-      description: messages.getMessage('source.oss.flags.tag')
-      // exclusive: ['branch']
+      description: messages.getMessage('source.oss.flags.tag'),
+      exclusive: ['branch']
     }),
     server: flags.string({
       char: 's',

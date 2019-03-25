@@ -25,8 +25,8 @@ export default class ConnectedAppCreate extends SfdxCommand {
     }),
     setdefaultworkbenchurl: flags.string({
       char: 's',
-      description: messages.getMessage('workbench.open.flags.setdefaultworkbenchurl')
-      // dependsOn: ['targetworkbenchurl']
+      description: messages.getMessage('workbench.open.flags.setdefaultworkbenchurl'),
+      dependsOn: ['targetworkbenchurl']
     }),
     urlonly: flags.string({
       char: 'r',
