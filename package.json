@@ -3,6 +3,9 @@
   "version": "0.9.5",
   "description": "A plugin for the Salesforce CLI built by Wade Wegner and containing a lot of helpful commands.",
   "main": "index.js",
+  "files": [
+    "*"
+  ],
   "author": "Wade Wegner @WadeWegner",
   "repository": "WadeWegner/sfdx-waw-plugin",
   "bugs": {
