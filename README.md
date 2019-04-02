@@ -54,7 +54,7 @@ OPTIONS
   --loglevel=(trace|debug|info|warn|error|fatal)  [default: warn] logging level for this command invocation
 ```
 
-_See code: [src/commands/waw/apex/log/latest.ts](https://github.com/WadeWegner/sfdx-waw-plugin/blob/v0.10.0/src/commands/waw/apex/log/latest.ts)_
+_See code: [src/commands/waw/apex/log/latest.ts](https://github.com/WadeWegner/sfdx-waw-plugin/blob/v1.0.0/src/commands/waw/apex/log/latest.ts)_
 
 ## `sfdx-waw-plugin waw:auth:username:login [--json] [--loglevel trace|debug|info|warn|error|fatal]`
 
@@ -69,7 +69,7 @@ OPTIONS
   --loglevel=(trace|debug|info|warn|error|fatal)  [default: warn] logging level for this command invocation
 ```
 
-_See code: [src/commands/waw/auth/username/login.ts](https://github.com/WadeWegner/sfdx-waw-plugin/blob/v0.10.0/src/commands/waw/auth/username/login.ts)_
+_See code: [src/commands/waw/auth/username/login.ts](https://github.com/WadeWegner/sfdx-waw-plugin/blob/v1.0.0/src/commands/waw/auth/username/login.ts)_
 
 ## `sfdx-waw-plugin waw:codeclean:check [--json] [--loglevel trace|debug|info|warn|error|fatal]`
 
@@ -84,7 +84,7 @@ OPTIONS
   --loglevel=(trace|debug|info|warn|error|fatal)  [default: warn] logging level for this command invocation
 ```
 
-_See code: [src/commands/waw/codeclean/check.ts](https://github.com/WadeWegner/sfdx-waw-plugin/blob/v0.10.0/src/commands/waw/codeclean/check.ts)_
+_See code: [src/commands/waw/codeclean/check.ts](https://github.com/WadeWegner/sfdx-waw-plugin/blob/v1.0.0/src/commands/waw/codeclean/check.ts)_
 
 ## `sfdx-waw-plugin waw:codeclean:results [--json] [--loglevel trace|debug|info|warn|error|fatal]`
 
@@ -99,7 +99,7 @@ OPTIONS
   --loglevel=(trace|debug|info|warn|error|fatal)  [default: warn] logging level for this command invocation
 ```
 
-_See code: [src/commands/waw/codeclean/results.ts](https://github.com/WadeWegner/sfdx-waw-plugin/blob/v0.10.0/src/commands/waw/codeclean/results.ts)_
+_See code: [src/commands/waw/codeclean/results.ts](https://github.com/WadeWegner/sfdx-waw-plugin/blob/v1.0.0/src/commands/waw/codeclean/results.ts)_
 
 ## `sfdx-waw-plugin waw:codeclean:start [-u <string>] [--apiversion <string>] [--json] [--loglevel trace|debug|info|warn|error|fatal]`
 
@@ -117,7 +117,7 @@ OPTIONS
   --loglevel=(trace|debug|info|warn|error|fatal)  [default: warn] logging level for this command invocation
 ```
 
-_See code: [src/commands/waw/codeclean/start.ts](https://github.com/WadeWegner/sfdx-waw-plugin/blob/v0.10.0/src/commands/waw/codeclean/start.ts)_
+_See code: [src/commands/waw/codeclean/start.ts](https://github.com/WadeWegner/sfdx-waw-plugin/blob/v1.0.0/src/commands/waw/codeclean/start.ts)_
 
 ## `sfdx-waw-plugin waw:connectedapp:create -n <string> [-l <string>] [-r] [-c <string>] [-d <string>] [-s <string>] [-e <string>] [-u <string>] [--apiversion <string>] [--json] [--loglevel trace|debug|info|warn|error|fatal]`
 
@@ -149,7 +149,7 @@ OPTIONS
   --loglevel=(trace|debug|info|warn|error|fatal)  [default: warn] logging level for this command invocation
 ```
 
-_See code: [src/commands/waw/connectedapp/create.ts](https://github.com/WadeWegner/sfdx-waw-plugin/blob/v0.10.0/src/commands/waw/connectedapp/create.ts)_
+_See code: [src/commands/waw/connectedapp/create.ts](https://github.com/WadeWegner/sfdx-waw-plugin/blob/v1.0.0/src/commands/waw/connectedapp/create.ts)_
 
 ## `sfdx-waw-plugin waw:connectedapp:list -n <string> [-u <string>] [--apiversion <string>] [--json] [--loglevel trace|debug|info|warn|error|fatal]`
 
@@ -168,7 +168,7 @@ OPTIONS
   --loglevel=(trace|debug|info|warn|error|fatal)  [default: warn] logging level for this command invocation
 ```
 
-_See code: [src/commands/waw/connectedapp/list.ts](https://github.com/WadeWegner/sfdx-waw-plugin/blob/v0.10.0/src/commands/waw/connectedapp/list.ts)_
+_See code: [src/commands/waw/connectedapp/list.ts](https://github.com/WadeWegner/sfdx-waw-plugin/blob/v1.0.0/src/commands/waw/connectedapp/list.ts)_
 
 ## `sfdx-waw-plugin waw:org:share -e <email> [-u <string>] [--apiversion <string>] [--json] [--loglevel trace|debug|info|warn|error|fatal]`
 
@@ -187,7 +187,7 @@ OPTIONS
   --loglevel=(trace|debug|info|warn|error|fatal)  [default: warn] logging level for this command invocation
 ```
 
-_See code: [src/commands/waw/org/share.ts](https://github.com/WadeWegner/sfdx-waw-plugin/blob/v0.10.0/src/commands/waw/org/share.ts)_
+_See code: [src/commands/waw/org/share.ts](https://github.com/WadeWegner/sfdx-waw-plugin/blob/v1.0.0/src/commands/waw/org/share.ts)_
 
 ## `sfdx-waw-plugin waw:package2:update -d <string> [-i <id>] [-n <string>] [-v <string>] [--json] [--loglevel trace|debug|info|warn|error|fatal]`
 
@@ -207,7 +207,7 @@ OPTIONS
   --loglevel=(trace|debug|info|warn|error|fatal)  [default: warn] logging level for this command invocation
 ```
 
-_See code: [src/commands/waw/package2/update.ts](https://github.com/WadeWegner/sfdx-waw-plugin/blob/v0.10.0/src/commands/waw/package2/update.ts)_
+_See code: [src/commands/waw/package2/update.ts](https://github.com/WadeWegner/sfdx-waw-plugin/blob/v1.0.0/src/commands/waw/package2/update.ts)_
 
 ## `sfdx-waw-plugin waw:project:display [-p] [--json] [--loglevel trace|debug|info|warn|error|fatal]`
 
@@ -221,7 +221,7 @@ OPTIONS
   --loglevel=(trace|debug|info|warn|error|fatal)  [default: warn] logging level for this command invocation
 ```
 
-_See code: [src/commands/waw/project/display.ts](https://github.com/WadeWegner/sfdx-waw-plugin/blob/v0.10.0/src/commands/waw/project/display.ts)_
+_See code: [src/commands/waw/project/display.ts](https://github.com/WadeWegner/sfdx-waw-plugin/blob/v1.0.0/src/commands/waw/project/display.ts)_
 
 ## `sfdx-waw-plugin waw:project:pdir:create [-p <string>] [-d] [--json] [--loglevel trace|debug|info|warn|error|fatal]`
 
@@ -238,7 +238,7 @@ OPTIONS
   --loglevel=(trace|debug|info|warn|error|fatal)  [default: warn] logging level for this command invocation
 ```
 
-_See code: [src/commands/waw/project/pdir/create.ts](https://github.com/WadeWegner/sfdx-waw-plugin/blob/v0.10.0/src/commands/waw/project/pdir/create.ts)_
+_See code: [src/commands/waw/project/pdir/create.ts](https://github.com/WadeWegner/sfdx-waw-plugin/blob/v1.0.0/src/commands/waw/project/pdir/create.ts)_
 
 ## `sfdx-waw-plugin waw:project:pdir:delete [-p <string>] [--json] [--loglevel trace|debug|info|warn|error|fatal]`
 
@@ -254,7 +254,7 @@ OPTIONS
   --loglevel=(trace|debug|info|warn|error|fatal)  [default: warn] logging level for this command invocation
 ```
 
-_See code: [src/commands/waw/project/pdir/delete.ts](https://github.com/WadeWegner/sfdx-waw-plugin/blob/v0.10.0/src/commands/waw/project/pdir/delete.ts)_
+_See code: [src/commands/waw/project/pdir/delete.ts](https://github.com/WadeWegner/sfdx-waw-plugin/blob/v1.0.0/src/commands/waw/project/pdir/delete.ts)_
 
 ## `sfdx-waw-plugin waw:project:pdir:set [-p <string>] [--json] [--loglevel trace|debug|info|warn|error|fatal]`
 
@@ -270,7 +270,7 @@ OPTIONS
   --loglevel=(trace|debug|info|warn|error|fatal)  [default: warn] logging level for this command invocation
 ```
 
-_See code: [src/commands/waw/project/pdir/set.ts](https://github.com/WadeWegner/sfdx-waw-plugin/blob/v0.10.0/src/commands/waw/project/pdir/set.ts)_
+_See code: [src/commands/waw/project/pdir/set.ts](https://github.com/WadeWegner/sfdx-waw-plugin/blob/v1.0.0/src/commands/waw/project/pdir/set.ts)_
 
 ## `sfdx-waw-plugin waw:source:create -p <string> [--json] [--loglevel trace|debug|info|warn|error|fatal]`
 
@@ -286,7 +286,7 @@ OPTIONS
   --loglevel=(trace|debug|info|warn|error|fatal)  [default: warn] logging level for this command invocation
 ```
 
-_See code: [src/commands/waw/source/create.ts](https://github.com/WadeWegner/sfdx-waw-plugin/blob/v0.10.0/src/commands/waw/source/create.ts)_
+_See code: [src/commands/waw/source/create.ts](https://github.com/WadeWegner/sfdx-waw-plugin/blob/v1.0.0/src/commands/waw/source/create.ts)_
 
 ## `sfdx-waw-plugin waw:source:oss -r <string> -p <string> [-b <string> | -t <string>] [-s <string>] [--json] [--loglevel trace|debug|info|warn|error|fatal]`
 
@@ -307,7 +307,7 @@ OPTIONS
   --loglevel=(trace|debug|info|warn|error|fatal)  [default: warn] logging level for this command invocation
 ```
 
-_See code: [src/commands/waw/source/oss.ts](https://github.com/WadeWegner/sfdx-waw-plugin/blob/v0.10.0/src/commands/waw/source/oss.ts)_
+_See code: [src/commands/waw/source/oss.ts](https://github.com/WadeWegner/sfdx-waw-plugin/blob/v1.0.0/src/commands/waw/source/oss.ts)_
 
 ## `sfdx-waw-plugin waw:static:create -n <string> -t <string> -d <directory> [--json] [--loglevel trace|debug|info|warn|error|fatal]`
 
@@ -331,7 +331,7 @@ OPTIONS
   --loglevel=(trace|debug|info|warn|error|fatal)  [default: warn] logging level for this command invocation
 ```
 
-_See code: [src/commands/waw/static/create.ts](https://github.com/WadeWegner/sfdx-waw-plugin/blob/v0.10.0/src/commands/waw/static/create.ts)_
+_See code: [src/commands/waw/static/create.ts](https://github.com/WadeWegner/sfdx-waw-plugin/blob/v1.0.0/src/commands/waw/static/create.ts)_
 
 ## `sfdx-waw-plugin waw:trace:create [-u <string>] [--apiversion <string>] [--json] [--loglevel trace|debug|info|warn|error|fatal]`
 
@@ -349,7 +349,7 @@ OPTIONS
   --loglevel=(trace|debug|info|warn|error|fatal)  [default: warn] logging level for this command invocation
 ```
 
-_See code: [src/commands/waw/trace/create.ts](https://github.com/WadeWegner/sfdx-waw-plugin/blob/v0.10.0/src/commands/waw/trace/create.ts)_
+_See code: [src/commands/waw/trace/create.ts](https://github.com/WadeWegner/sfdx-waw-plugin/blob/v1.0.0/src/commands/waw/trace/create.ts)_
 
 ## `sfdx-waw-plugin waw:trace:delete [-u <string>] [--apiversion <string>] [--json] [--loglevel trace|debug|info|warn|error|fatal]`
 
@@ -367,7 +367,7 @@ OPTIONS
   --loglevel=(trace|debug|info|warn|error|fatal)  [default: warn] logging level for this command invocation
 ```
 
-_See code: [src/commands/waw/trace/delete.ts](https://github.com/WadeWegner/sfdx-waw-plugin/blob/v0.10.0/src/commands/waw/trace/delete.ts)_
+_See code: [src/commands/waw/trace/delete.ts](https://github.com/WadeWegner/sfdx-waw-plugin/blob/v1.0.0/src/commands/waw/trace/delete.ts)_
 
 ## `sfdx-waw-plugin waw:trace:list [-u <string>] [--apiversion <string>] [--json] [--loglevel trace|debug|info|warn|error|fatal]`
 
@@ -385,7 +385,7 @@ OPTIONS
   --loglevel=(trace|debug|info|warn|error|fatal)  [default: warn] logging level for this command invocation
 ```
 
-_See code: [src/commands/waw/trace/list.ts](https://github.com/WadeWegner/sfdx-waw-plugin/blob/v0.10.0/src/commands/waw/trace/list.ts)_
+_See code: [src/commands/waw/trace/list.ts](https://github.com/WadeWegner/sfdx-waw-plugin/blob/v1.0.0/src/commands/waw/trace/list.ts)_
 
 ## `sfdx-waw-plugin waw:workbench:open [-s <string> -t <string>] [-r <string>] [-u <string>] [--apiversion <string>] [--json] [--loglevel trace|debug|info|warn|error|fatal]`
 
@@ -412,5 +412,5 @@ OPTIONS
   --loglevel=(trace|debug|info|warn|error|fatal)       [default: warn] logging level for this command invocation
 ```
 
-_See code: [src/commands/waw/workbench/open.ts](https://github.com/WadeWegner/sfdx-waw-plugin/blob/v0.10.0/src/commands/waw/workbench/open.ts)_
+_See code: [src/commands/waw/workbench/open.ts](https://github.com/WadeWegner/sfdx-waw-plugin/blob/v1.0.0/src/commands/waw/workbench/open.ts)_
 <!-- commandsstop -->
