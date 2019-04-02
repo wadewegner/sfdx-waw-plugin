@@ -5,6 +5,7 @@
   "main": "index.js",
   "author": "Wade Wegner @WadeWegner",
   "repository": "WadeWegner/sfdx-waw-plugin",
+  "files": ["*"],
   "bugs": {
     "url": "https://github.com/wadewegner/sfdx-waw-plugin/issues"
   },
