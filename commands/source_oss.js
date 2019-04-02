@@ -32,6 +32,13 @@ const files = require('../lib/files.js');
         hasValue: true
       },
       {
+        name: 'tag',
+        char: 't',
+        description: 'Git repository tag',
+        required: false,
+        hasValue: true
+      },
+      {
         name: 'server',
         char: 's',
         description: 'Git host server url (default is "github.com")',
@@ -63,6 +70,11 @@ const files = require('../lib/files.js');
         branch = 'master';
       }
 
+      let tag = context.flags.tag;
+      if (!tag) {
+        branch = tag;
+      }
+
       // check to ensure Github repo exists
       urlExists(url, (err1, repoExists) => {
         if (!repoExists) {
@@ -75,7 +87,7 @@ const files = require('../lib/files.js');
         const rawApiUrl = `https://api.github.com/repos/${context.flags.repository}/git/trees/${branch}?recursive=1`;
 
 
-        // check to ensure sfdx-oss-manifest.json exists   
+        // check to ensure sfdx-oss-manifest.json exists
         urlExists(rawUrlManifest, (err2, manifestExists) => {
           if (!manifestExists) {
             console.log('sfdx-oss-manifest.json not found in repository'); // eslint-disable-line no-console
@@ -110,20 +122,22 @@ const files = require('../lib/files.js');
                 }
 
               });
-              
+
 
               // grab the files
               const manifestFiles = manifestJson.files;
 
-              files.writeFiles(manifestFiles, targetPath, rawUrlManifestFolder, (outputFiles) => {
+              if (manifestFiles.length>0){
+                files.writeFiles(manifestFiles, targetPath, rawUrlManifestFolder, (outputFiles) => {
 
-                console.log('Writing files ...'); // eslint-disable-line no-console
+                  console.log('Writing files ...'); // eslint-disable-line no-console
 
-                for (let i = 0, len = outputFiles.length; i < len; i++) {
-                  console.log(`  ${outputFiles[i]}`); // eslint-disable-line no-console
-                }
+                  for (let i = 0, len = outputFiles.length; i < len; i++) {
+                    console.log(`  ${outputFiles[i]}`); // eslint-disable-line no-console
+                  }
 
-              });
+                });
+              }
 
             } else {
               console.log('Only version 1.0.0 is currently supported'); // eslint-disable-line no-console
