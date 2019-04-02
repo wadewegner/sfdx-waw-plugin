@@ -17,28 +17,28 @@ A plugin for the Salesforce CLI built by Wade Wegner and containing a lot of hel
 <!-- tocstop -->
 
 <!-- commands -->
-* [`sfdx-waw-plugin <%= command.id %> [-u <string>] [--apiversion <string>] [--json] [--loglevel trace|debug|info|warn|error|fatal]`](#sfdx-waw-plugin--commandid---u-string---apiversion-string---json---loglevel-tracedebuginfowarnerrorfatal)
-* [`sfdx-waw-plugin <%= command.id %> [--json] [--loglevel trace|debug|info|warn|error|fatal]`](#sfdx-waw-plugin--commandid----json---loglevel-tracedebuginfowarnerrorfatal)
-* [`sfdx-waw-plugin <%= command.id %> [--json] [--loglevel trace|debug|info|warn|error|fatal]`](#sfdx-waw-plugin--commandid----json---loglevel-tracedebuginfowarnerrorfatal-1)
-* [`sfdx-waw-plugin <%= command.id %> [--json] [--loglevel trace|debug|info|warn|error|fatal]`](#sfdx-waw-plugin--commandid----json---loglevel-tracedebuginfowarnerrorfatal-2)
-* [`sfdx-waw-plugin <%= command.id %> [-u <string>] [--apiversion <string>] [--json] [--loglevel trace|debug|info|warn|error|fatal]`](#sfdx-waw-plugin--commandid---u-string---apiversion-string---json---loglevel-tracedebuginfowarnerrorfatal-1)
-* [`sfdx-waw-plugin <%= command.id %> -n <string> [-l <string>] [-r] [-c <string>] [-d <string>] [-s <string>] [-e <string>] [-u <string>] [--apiversion <string>] [--json] [--loglevel trace|debug|info|warn|error|fatal]`](#sfdx-waw-plugin--commandid---n-string--l-string--r--c-string--d-string--s-string--e-string--u-string---apiversion-string---json---loglevel-tracedebuginfowarnerrorfatal)
-* [`sfdx-waw-plugin <%= command.id %> -n <string> [-u <string>] [--apiversion <string>] [--json] [--loglevel trace|debug|info|warn|error|fatal]`](#sfdx-waw-plugin--commandid---n-string--u-string---apiversion-string---json---loglevel-tracedebuginfowarnerrorfatal)
-* [`sfdx-waw-plugin <%= command.id %> -e <email> [-u <string>] [--apiversion <string>] [--json] [--loglevel trace|debug|info|warn|error|fatal]`](#sfdx-waw-plugin--commandid---e-email--u-string---apiversion-string---json---loglevel-tracedebuginfowarnerrorfatal)
-* [`sfdx-waw-plugin <%= command.id %> -d <string> [-i <id>] [-n <string>] [-v <string>] [--json] [--loglevel trace|debug|info|warn|error|fatal]`](#sfdx-waw-plugin--commandid---d-string--i-id--n-string--v-string---json---loglevel-tracedebuginfowarnerrorfatal)
-* [`sfdx-waw-plugin <%= command.id %> [-p] [--json] [--loglevel trace|debug|info|warn|error|fatal]`](#sfdx-waw-plugin--commandid---p---json---loglevel-tracedebuginfowarnerrorfatal)
-* [`sfdx-waw-plugin <%= command.id %> [-p <string>] [-d] [--json] [--loglevel trace|debug|info|warn|error|fatal]`](#sfdx-waw-plugin--commandid---p-string--d---json---loglevel-tracedebuginfowarnerrorfatal)
-* [`sfdx-waw-plugin <%= command.id %> [-p <string>] [--json] [--loglevel trace|debug|info|warn|error|fatal]`](#sfdx-waw-plugin--commandid---p-string---json---loglevel-tracedebuginfowarnerrorfatal)
-* [`sfdx-waw-plugin <%= command.id %> [-p <string>] [--json] [--loglevel trace|debug|info|warn|error|fatal]`](#sfdx-waw-plugin--commandid---p-string---json---loglevel-tracedebuginfowarnerrorfatal-1)
-* [`sfdx-waw-plugin <%= command.id %> -p <string> [--json] [--loglevel trace|debug|info|warn|error|fatal]`](#sfdx-waw-plugin--commandid---p-string---json---loglevel-tracedebuginfowarnerrorfatal-2)
-* [`sfdx-waw-plugin <%= command.id %> -r <string> -p <string> [-b <string>] [-t <string>] [-s <string>] [--json] [--loglevel trace|debug|info|warn|error|fatal]`](#sfdx-waw-plugin--commandid---r-string--p-string--b-string--t-string--s-string---json---loglevel-tracedebuginfowarnerrorfatal)
-* [`sfdx-waw-plugin <%= command.id %> -n <string> -t <string> -d <directory> [--json] [--loglevel trace|debug|info|warn|error|fatal]`](#sfdx-waw-plugin--commandid---n-string--t-string--d-directory---json---loglevel-tracedebuginfowarnerrorfatal)
-* [`sfdx-waw-plugin <%= command.id %> [-u <string>] [--apiversion <string>] [--json] [--loglevel trace|debug|info|warn|error|fatal]`](#sfdx-waw-plugin--commandid---u-string---apiversion-string---json---loglevel-tracedebuginfowarnerrorfatal-2)
-* [`sfdx-waw-plugin <%= command.id %> [-u <string>] [--apiversion <string>] [--json] [--loglevel trace|debug|info|warn|error|fatal]`](#sfdx-waw-plugin--commandid---u-string---apiversion-string---json---loglevel-tracedebuginfowarnerrorfatal-3)
-* [`sfdx-waw-plugin <%= command.id %> [-u <string>] [--apiversion <string>] [--json] [--loglevel trace|debug|info|warn|error|fatal]`](#sfdx-waw-plugin--commandid---u-string---apiversion-string---json---loglevel-tracedebuginfowarnerrorfatal-4)
-* [`sfdx-waw-plugin <%= command.id %> [-t <string>] [-s <string>] [-r <string>] [-u <string>] [--apiversion <string>] [--json] [--loglevel trace|debug|info|warn|error|fatal]`](#sfdx-waw-plugin--commandid---t-string--s-string--r-string--u-string---apiversion-string---json---loglevel-tracedebuginfowarnerrorfatal)
+* [`sfdx-waw-plugin waw:apex:log:latest [-u <string>] [--apiversion <string>] [--json] [--loglevel trace|debug|info|warn|error|fatal]`](#sfdx-waw-plugin-wawapexloglatest--u-string---apiversion-string---json---loglevel-tracedebuginfowarnerrorfatal)
+* [`sfdx-waw-plugin waw:auth:username:login [--json] [--loglevel trace|debug|info|warn|error|fatal]`](#sfdx-waw-plugin-wawauthusernamelogin---json---loglevel-tracedebuginfowarnerrorfatal)
+* [`sfdx-waw-plugin waw:codeclean:check [--json] [--loglevel trace|debug|info|warn|error|fatal]`](#sfdx-waw-plugin-wawcodecleancheck---json---loglevel-tracedebuginfowarnerrorfatal)
+* [`sfdx-waw-plugin waw:codeclean:results [--json] [--loglevel trace|debug|info|warn|error|fatal]`](#sfdx-waw-plugin-wawcodecleanresults---json---loglevel-tracedebuginfowarnerrorfatal)
+* [`sfdx-waw-plugin waw:codeclean:start [-u <string>] [--apiversion <string>] [--json] [--loglevel trace|debug|info|warn|error|fatal]`](#sfdx-waw-plugin-wawcodecleanstart--u-string---apiversion-string---json---loglevel-tracedebuginfowarnerrorfatal)
+* [`sfdx-waw-plugin waw:connectedapp:create -n <string> [-l <string>] [-r] [-c <string>] [-d <string>] [-s <string>] [-e <string>] [-u <string>] [--apiversion <string>] [--json] [--loglevel trace|debug|info|warn|error|fatal]`](#sfdx-waw-plugin-wawconnectedappcreate--n-string--l-string--r--c-string--d-string--s-string--e-string--u-string---apiversion-string---json---loglevel-tracedebuginfowarnerrorfatal)
+* [`sfdx-waw-plugin waw:connectedapp:list -n <string> [-u <string>] [--apiversion <string>] [--json] [--loglevel trace|debug|info|warn|error|fatal]`](#sfdx-waw-plugin-wawconnectedapplist--n-string--u-string---apiversion-string---json---loglevel-tracedebuginfowarnerrorfatal)
+* [`sfdx-waw-plugin waw:org:share -e <email> [-u <string>] [--apiversion <string>] [--json] [--loglevel trace|debug|info|warn|error|fatal]`](#sfdx-waw-plugin-waworgshare--e-email--u-string---apiversion-string---json---loglevel-tracedebuginfowarnerrorfatal)
+* [`sfdx-waw-plugin waw:package2:update -d <string> [-i <id>] [-n <string>] [-v <string>] [--json] [--loglevel trace|debug|info|warn|error|fatal]`](#sfdx-waw-plugin-wawpackage2update--d-string--i-id--n-string--v-string---json---loglevel-tracedebuginfowarnerrorfatal)
+* [`sfdx-waw-plugin waw:project:display [-p] [--json] [--loglevel trace|debug|info|warn|error|fatal]`](#sfdx-waw-plugin-wawprojectdisplay--p---json---loglevel-tracedebuginfowarnerrorfatal)
+* [`sfdx-waw-plugin waw:project:pdir:create [-p <string>] [-d] [--json] [--loglevel trace|debug|info|warn|error|fatal]`](#sfdx-waw-plugin-wawprojectpdircreate--p-string--d---json---loglevel-tracedebuginfowarnerrorfatal)
+* [`sfdx-waw-plugin waw:project:pdir:delete [-p <string>] [--json] [--loglevel trace|debug|info|warn|error|fatal]`](#sfdx-waw-plugin-wawprojectpdirdelete--p-string---json---loglevel-tracedebuginfowarnerrorfatal)
+* [`sfdx-waw-plugin waw:project:pdir:set [-p <string>] [--json] [--loglevel trace|debug|info|warn|error|fatal]`](#sfdx-waw-plugin-wawprojectpdirset--p-string---json---loglevel-tracedebuginfowarnerrorfatal)
+* [`sfdx-waw-plugin waw:source:create -p <string> [--json] [--loglevel trace|debug|info|warn|error|fatal]`](#sfdx-waw-plugin-wawsourcecreate--p-string---json---loglevel-tracedebuginfowarnerrorfatal)
+* [`sfdx-waw-plugin waw:source:oss -r <string> -p <string> [-b <string> | -t <string>] [-s <string>] [--json] [--loglevel trace|debug|info|warn|error|fatal]`](#sfdx-waw-plugin-wawsourceoss--r-string--p-string--b-string---t-string--s-string---json---loglevel-tracedebuginfowarnerrorfatal)
+* [`sfdx-waw-plugin waw:static:create -n <string> -t <string> -d <directory> [--json] [--loglevel trace|debug|info|warn|error|fatal]`](#sfdx-waw-plugin-wawstaticcreate--n-string--t-string--d-directory---json---loglevel-tracedebuginfowarnerrorfatal)
+* [`sfdx-waw-plugin waw:trace:create [-u <string>] [--apiversion <string>] [--json] [--loglevel trace|debug|info|warn|error|fatal]`](#sfdx-waw-plugin-wawtracecreate--u-string---apiversion-string---json---loglevel-tracedebuginfowarnerrorfatal)
+* [`sfdx-waw-plugin waw:trace:delete [-u <string>] [--apiversion <string>] [--json] [--loglevel trace|debug|info|warn|error|fatal]`](#sfdx-waw-plugin-wawtracedelete--u-string---apiversion-string---json---loglevel-tracedebuginfowarnerrorfatal)
+* [`sfdx-waw-plugin waw:trace:list [-u <string>] [--apiversion <string>] [--json] [--loglevel trace|debug|info|warn|error|fatal]`](#sfdx-waw-plugin-wawtracelist--u-string---apiversion-string---json---loglevel-tracedebuginfowarnerrorfatal)
+* [`sfdx-waw-plugin waw:workbench:open [-s <string> -t <string>] [-r <string>] [-u <string>] [--apiversion <string>] [--json] [--loglevel trace|debug|info|warn|error|fatal]`](#sfdx-waw-plugin-wawworkbenchopen--s-string--t-string--r-string--u-string---apiversion-string---json---loglevel-tracedebuginfowarnerrorfatal)
 
-## `sfdx-waw-plugin <%= command.id %> [-u <string>] [--apiversion <string>] [--json] [--loglevel trace|debug|info|warn|error|fatal]`
+## `sfdx-waw-plugin waw:apex:log:latest [-u <string>] [--apiversion <string>] [--json] [--loglevel trace|debug|info|warn|error|fatal]`
 
 get the latest apex log
 
@@ -56,7 +56,7 @@ OPTIONS
 
 _See code: [src/commands/waw/apex/log/latest.ts](https://github.com/WadeWegner/sfdx-waw-plugin/blob/v0.10.0/src/commands/waw/apex/log/latest.ts)_
 
-## `sfdx-waw-plugin <%= command.id %> [--json] [--loglevel trace|debug|info|warn|error|fatal]`
+## `sfdx-waw-plugin waw:auth:username:login [--json] [--loglevel trace|debug|info|warn|error|fatal]`
 
 authorize an org using the username password flow
 
@@ -71,7 +71,7 @@ OPTIONS
 
 _See code: [src/commands/waw/auth/username/login.ts](https://github.com/WadeWegner/sfdx-waw-plugin/blob/v0.10.0/src/commands/waw/auth/username/login.ts)_
 
-## `sfdx-waw-plugin <%= command.id %> [--json] [--loglevel trace|debug|info|warn|error|fatal]`
+## `sfdx-waw-plugin waw:codeclean:check [--json] [--loglevel trace|debug|info|warn|error|fatal]`
 
 check the status of the code clean service running against your org
 
@@ -86,7 +86,7 @@ OPTIONS
 
 _See code: [src/commands/waw/codeclean/check.ts](https://github.com/WadeWegner/sfdx-waw-plugin/blob/v0.10.0/src/commands/waw/codeclean/check.ts)_
 
-## `sfdx-waw-plugin <%= command.id %> [--json] [--loglevel trace|debug|info|warn|error|fatal]`
+## `sfdx-waw-plugin waw:codeclean:results [--json] [--loglevel trace|debug|info|warn|error|fatal]`
 
 get the results of the code clean service running against your org
 
@@ -101,7 +101,7 @@ OPTIONS
 
 _See code: [src/commands/waw/codeclean/results.ts](https://github.com/WadeWegner/sfdx-waw-plugin/blob/v0.10.0/src/commands/waw/codeclean/results.ts)_
 
-## `sfdx-waw-plugin <%= command.id %> [-u <string>] [--apiversion <string>] [--json] [--loglevel trace|debug|info|warn|error|fatal]`
+## `sfdx-waw-plugin waw:codeclean:start [-u <string>] [--apiversion <string>] [--json] [--loglevel trace|debug|info|warn|error|fatal]`
 
 check the status of the code clean service running against your org
 
@@ -119,7 +119,7 @@ OPTIONS
 
 _See code: [src/commands/waw/codeclean/start.ts](https://github.com/WadeWegner/sfdx-waw-plugin/blob/v0.10.0/src/commands/waw/codeclean/start.ts)_
 
-## `sfdx-waw-plugin <%= command.id %> -n <string> [-l <string>] [-r] [-c <string>] [-d <string>] [-s <string>] [-e <string>] [-u <string>] [--apiversion <string>] [--json] [--loglevel trace|debug|info|warn|error|fatal]`
+## `sfdx-waw-plugin waw:connectedapp:create -n <string> [-l <string>] [-r] [-c <string>] [-d <string>] [-s <string>] [-e <string>] [-u <string>] [--apiversion <string>] [--json] [--loglevel trace|debug|info|warn|error|fatal]`
 
 create a connected app in your org
 
@@ -151,7 +151,7 @@ OPTIONS
 
 _See code: [src/commands/waw/connectedapp/create.ts](https://github.com/WadeWegner/sfdx-waw-plugin/blob/v0.10.0/src/commands/waw/connectedapp/create.ts)_
 
-## `sfdx-waw-plugin <%= command.id %> -n <string> [-u <string>] [--apiversion <string>] [--json] [--loglevel trace|debug|info|warn|error|fatal]`
+## `sfdx-waw-plugin waw:connectedapp:list -n <string> [-u <string>] [--apiversion <string>] [--json] [--loglevel trace|debug|info|warn|error|fatal]`
 
 list the connected apps in your org
 
@@ -170,7 +170,7 @@ OPTIONS
 
 _See code: [src/commands/waw/connectedapp/list.ts](https://github.com/WadeWegner/sfdx-waw-plugin/blob/v0.10.0/src/commands/waw/connectedapp/list.ts)_
 
-## `sfdx-waw-plugin <%= command.id %> -e <email> [-u <string>] [--apiversion <string>] [--json] [--loglevel trace|debug|info|warn|error|fatal]`
+## `sfdx-waw-plugin waw:org:share -e <email> [-u <string>] [--apiversion <string>] [--json] [--loglevel trace|debug|info|warn|error|fatal]`
 
 share a scratch org with someone via email
 
@@ -189,7 +189,7 @@ OPTIONS
 
 _See code: [src/commands/waw/org/share.ts](https://github.com/WadeWegner/sfdx-waw-plugin/blob/v0.10.0/src/commands/waw/org/share.ts)_
 
-## `sfdx-waw-plugin <%= command.id %> -d <string> [-i <id>] [-n <string>] [-v <string>] [--json] [--loglevel trace|debug|info|warn|error|fatal]`
+## `sfdx-waw-plugin waw:package2:update -d <string> [-i <id>] [-n <string>] [-v <string>] [--json] [--loglevel trace|debug|info|warn|error|fatal]`
 
 update the sfdx-project.json with package2 info
 
@@ -209,7 +209,7 @@ OPTIONS
 
 _See code: [src/commands/waw/package2/update.ts](https://github.com/WadeWegner/sfdx-waw-plugin/blob/v0.10.0/src/commands/waw/package2/update.ts)_
 
-## `sfdx-waw-plugin <%= command.id %> [-p] [--json] [--loglevel trace|debug|info|warn|error|fatal]`
+## `sfdx-waw-plugin waw:project:display [-p] [--json] [--loglevel trace|debug|info|warn|error|fatal]`
 
 ```
 USAGE
@@ -223,7 +223,7 @@ OPTIONS
 
 _See code: [src/commands/waw/project/display.ts](https://github.com/WadeWegner/sfdx-waw-plugin/blob/v0.10.0/src/commands/waw/project/display.ts)_
 
-## `sfdx-waw-plugin <%= command.id %> [-p <string>] [-d] [--json] [--loglevel trace|debug|info|warn|error|fatal]`
+## `sfdx-waw-plugin waw:project:pdir:create [-p <string>] [-d] [--json] [--loglevel trace|debug|info|warn|error|fatal]`
 
 create a package directory for the project definition
 
@@ -240,7 +240,7 @@ OPTIONS
 
 _See code: [src/commands/waw/project/pdir/create.ts](https://github.com/WadeWegner/sfdx-waw-plugin/blob/v0.10.0/src/commands/waw/project/pdir/create.ts)_
 
-## `sfdx-waw-plugin <%= command.id %> [-p <string>] [--json] [--loglevel trace|debug|info|warn|error|fatal]`
+## `sfdx-waw-plugin waw:project:pdir:delete [-p <string>] [--json] [--loglevel trace|debug|info|warn|error|fatal]`
 
 delete a package directory from the project definition
 
@@ -256,7 +256,7 @@ OPTIONS
 
 _See code: [src/commands/waw/project/pdir/delete.ts](https://github.com/WadeWegner/sfdx-waw-plugin/blob/v0.10.0/src/commands/waw/project/pdir/delete.ts)_
 
-## `sfdx-waw-plugin <%= command.id %> [-p <string>] [--json] [--loglevel trace|debug|info|warn|error|fatal]`
+## `sfdx-waw-plugin waw:project:pdir:set [-p <string>] [--json] [--loglevel trace|debug|info|warn|error|fatal]`
 
 set the default package directory
 
@@ -272,7 +272,7 @@ OPTIONS
 
 _See code: [src/commands/waw/project/pdir/set.ts](https://github.com/WadeWegner/sfdx-waw-plugin/blob/v0.10.0/src/commands/waw/project/pdir/set.ts)_
 
-## `sfdx-waw-plugin <%= command.id %> -p <string> [--json] [--loglevel trace|debug|info|warn|error|fatal]`
+## `sfdx-waw-plugin waw:source:create -p <string> [--json] [--loglevel trace|debug|info|warn|error|fatal]`
 
 create a manifest file for your open source project
 
@@ -288,13 +288,13 @@ OPTIONS
 
 _See code: [src/commands/waw/source/create.ts](https://github.com/WadeWegner/sfdx-waw-plugin/blob/v0.10.0/src/commands/waw/source/create.ts)_
 
-## `sfdx-waw-plugin <%= command.id %> -r <string> -p <string> [-b <string>] [-t <string>] [-s <string>] [--json] [--loglevel trace|debug|info|warn|error|fatal]`
+## `sfdx-waw-plugin waw:source:oss -r <string> -p <string> [-b <string> | -t <string>] [-s <string>] [--json] [--loglevel trace|debug|info|warn|error|fatal]`
 
 sasily pulls in open source from a Github repository
 
 ```
 USAGE
-  $ sfdx-waw-plugin waw:source:oss -r <string> -p <string> [-b <string>] [-t <string>] [-s <string>] [--json] 
+  $ sfdx-waw-plugin waw:source:oss -r <string> -p <string> [-b <string> | -t <string>] [-s <string>] [--json] 
   [--loglevel trace|debug|info|warn|error|fatal]
 
 OPTIONS
@@ -309,7 +309,7 @@ OPTIONS
 
 _See code: [src/commands/waw/source/oss.ts](https://github.com/WadeWegner/sfdx-waw-plugin/blob/v0.10.0/src/commands/waw/source/oss.ts)_
 
-## `sfdx-waw-plugin <%= command.id %> -n <string> -t <string> -d <directory> [--json] [--loglevel trace|debug|info|warn|error|fatal]`
+## `sfdx-waw-plugin waw:static:create -n <string> -t <string> -d <directory> [--json] [--loglevel trace|debug|info|warn|error|fatal]`
 
 create a generic static resource
 
@@ -333,7 +333,7 @@ OPTIONS
 
 _See code: [src/commands/waw/static/create.ts](https://github.com/WadeWegner/sfdx-waw-plugin/blob/v0.10.0/src/commands/waw/static/create.ts)_
 
-## `sfdx-waw-plugin <%= command.id %> [-u <string>] [--apiversion <string>] [--json] [--loglevel trace|debug|info|warn|error|fatal]`
+## `sfdx-waw-plugin waw:trace:create [-u <string>] [--apiversion <string>] [--json] [--loglevel trace|debug|info|warn|error|fatal]`
 
 create trace flag
 
@@ -351,7 +351,7 @@ OPTIONS
 
 _See code: [src/commands/waw/trace/create.ts](https://github.com/WadeWegner/sfdx-waw-plugin/blob/v0.10.0/src/commands/waw/trace/create.ts)_
 
-## `sfdx-waw-plugin <%= command.id %> [-u <string>] [--apiversion <string>] [--json] [--loglevel trace|debug|info|warn|error|fatal]`
+## `sfdx-waw-plugin waw:trace:delete [-u <string>] [--apiversion <string>] [--json] [--loglevel trace|debug|info|warn|error|fatal]`
 
 delete trace flag
 
@@ -369,7 +369,7 @@ OPTIONS
 
 _See code: [src/commands/waw/trace/delete.ts](https://github.com/WadeWegner/sfdx-waw-plugin/blob/v0.10.0/src/commands/waw/trace/delete.ts)_
 
-## `sfdx-waw-plugin <%= command.id %> [-u <string>] [--apiversion <string>] [--json] [--loglevel trace|debug|info|warn|error|fatal]`
+## `sfdx-waw-plugin waw:trace:list [-u <string>] [--apiversion <string>] [--json] [--loglevel trace|debug|info|warn|error|fatal]`
 
 list trace flags
 
@@ -387,13 +387,13 @@ OPTIONS
 
 _See code: [src/commands/waw/trace/list.ts](https://github.com/WadeWegner/sfdx-waw-plugin/blob/v0.10.0/src/commands/waw/trace/list.ts)_
 
-## `sfdx-waw-plugin <%= command.id %> [-t <string>] [-s <string>] [-r <string>] [-u <string>] [--apiversion <string>] [--json] [--loglevel trace|debug|info|warn|error|fatal]`
+## `sfdx-waw-plugin waw:workbench:open [-s <string> -t <string>] [-r <string>] [-u <string>] [--apiversion <string>] [--json] [--loglevel trace|debug|info|warn|error|fatal]`
 
 open workbench using the current target username
 
 ```
 USAGE
-  $ sfdx-waw-plugin waw:workbench:open [-t <string>] [-s <string>] [-r <string>] [-u <string>] [--apiversion <string>] 
+  $ sfdx-waw-plugin waw:workbench:open [-s <string> -t <string>] [-r <string>] [-u <string>] [--apiversion <string>] 
   [--json] [--loglevel trace|debug|info|warn|error|fatal]
 
 OPTIONS
