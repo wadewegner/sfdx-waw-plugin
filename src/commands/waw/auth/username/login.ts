@@ -14,7 +14,7 @@ export default class ApexLogGet extends SfdxCommand {
   public static description = messages.getMessage('auth.username.login.description');
   public static examples = [];
 
-  public static readonly flagConfig = {
+  public static readonly flagsConfig = {
     instanceurl: flags.url({
       char: 'r',
       description: messages.getMessage('auth.username.login.flags.instanceurl')
