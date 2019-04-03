@@ -18,9 +18,9 @@ A plugin for the Salesforce CLI built by Wade Wegner and containing a lot of hel
 
 <!-- commands -->
 * [`sfdx-waw-plugin waw:apex:log:latest [-u <string>] [--apiversion <string>] [--json] [--loglevel trace|debug|info|warn|error|fatal]`](#sfdx-waw-plugin-wawapexloglatest--u-string---apiversion-string---json---loglevel-tracedebuginfowarnerrorfatal)
-* [`sfdx-waw-plugin waw:auth:username:login [--json] [--loglevel trace|debug|info|warn|error|fatal]`](#sfdx-waw-plugin-wawauthusernamelogin---json---loglevel-tracedebuginfowarnerrorfatal)
-* [`sfdx-waw-plugin waw:codeclean:check [--json] [--loglevel trace|debug|info|warn|error|fatal]`](#sfdx-waw-plugin-wawcodecleancheck---json---loglevel-tracedebuginfowarnerrorfatal)
-* [`sfdx-waw-plugin waw:codeclean:results [--json] [--loglevel trace|debug|info|warn|error|fatal]`](#sfdx-waw-plugin-wawcodecleanresults---json---loglevel-tracedebuginfowarnerrorfatal)
+* [`sfdx-waw-plugin waw:auth:username:login -u <string> [-r <url>] [-p <string>] [--json] [--loglevel trace|debug|info|warn|error|fatal]`](#sfdx-waw-plugin-wawauthusernamelogin--u-string--r-url--p-string---json---loglevel-tracedebuginfowarnerrorfatal)
+* [`sfdx-waw-plugin waw:codeclean:check -i <string> [--json] [--loglevel trace|debug|info|warn|error|fatal]`](#sfdx-waw-plugin-wawcodecleancheck--i-string---json---loglevel-tracedebuginfowarnerrorfatal)
+* [`sfdx-waw-plugin waw:codeclean:results -i <string> [--json] [--loglevel trace|debug|info|warn|error|fatal]`](#sfdx-waw-plugin-wawcodecleanresults--i-string---json---loglevel-tracedebuginfowarnerrorfatal)
 * [`sfdx-waw-plugin waw:codeclean:start [-u <string>] [--apiversion <string>] [--json] [--loglevel trace|debug|info|warn|error|fatal]`](#sfdx-waw-plugin-wawcodecleanstart--u-string---apiversion-string---json---loglevel-tracedebuginfowarnerrorfatal)
 * [`sfdx-waw-plugin waw:connectedapp:create -n <string> [-l <string>] [-r] [-c <string>] [-d <string>] [-s <string>] [-e <string>] [-u <string>] [--apiversion <string>] [--json] [--loglevel trace|debug|info|warn|error|fatal]`](#sfdx-waw-plugin-wawconnectedappcreate--n-string--l-string--r--c-string--d-string--s-string--e-string--u-string---apiversion-string---json---loglevel-tracedebuginfowarnerrorfatal)
 * [`sfdx-waw-plugin waw:connectedapp:list -n <string> [-u <string>] [--apiversion <string>] [--json] [--loglevel trace|debug|info|warn|error|fatal]`](#sfdx-waw-plugin-wawconnectedapplist--n-string--u-string---apiversion-string---json---loglevel-tracedebuginfowarnerrorfatal)
@@ -56,45 +56,56 @@ OPTIONS
 
 _See code: [src/commands/waw/apex/log/latest.ts](https://github.com/WadeWegner/sfdx-waw-plugin/blob/v1.0.0/src/commands/waw/apex/log/latest.ts)_
 
-## `sfdx-waw-plugin waw:auth:username:login [--json] [--loglevel trace|debug|info|warn|error|fatal]`
+## `sfdx-waw-plugin waw:auth:username:login -u <string> [-r <url>] [-p <string>] [--json] [--loglevel trace|debug|info|warn|error|fatal]`
 
 authorize an org using the username password flow
 
 ```
 USAGE
-  $ sfdx-waw-plugin waw:auth:username:login [--json] [--loglevel trace|debug|info|warn|error|fatal]
+  $ sfdx-waw-plugin waw:auth:username:login -u <string> [-r <url>] [-p <string>] [--json] [--loglevel 
+  trace|debug|info|warn|error|fatal]
 
 OPTIONS
+  -p, --password=password                         password for org - it is recommended to not set this flag and use the
+                                                  prompt
+
+  -r, --instanceurl=instanceurl                   the login URL of the instance the org lives on
+
+  -u, --username=username                         (required) username for org
+
   --json                                          format output as json
+
   --loglevel=(trace|debug|info|warn|error|fatal)  [default: warn] logging level for this command invocation
 ```
 
 _See code: [src/commands/waw/auth/username/login.ts](https://github.com/WadeWegner/sfdx-waw-plugin/blob/v1.0.0/src/commands/waw/auth/username/login.ts)_
 
-## `sfdx-waw-plugin waw:codeclean:check [--json] [--loglevel trace|debug|info|warn|error|fatal]`
+## `sfdx-waw-plugin waw:codeclean:check -i <string> [--json] [--loglevel trace|debug|info|warn|error|fatal]`
 
 check the status of the code clean service running against your org
 
 ```
 USAGE
-  $ sfdx-waw-plugin waw:codeclean:check [--json] [--loglevel trace|debug|info|warn|error|fatal]
+  $ sfdx-waw-plugin waw:codeclean:check -i <string> [--json] [--loglevel trace|debug|info|warn|error|fatal]
 
 OPTIONS
+  -i, --id=id                                     (required) job id for the code clean service
   --json                                          format output as json
   --loglevel=(trace|debug|info|warn|error|fatal)  [default: warn] logging level for this command invocation
 ```
 
 _See code: [src/commands/waw/codeclean/check.ts](https://github.com/WadeWegner/sfdx-waw-plugin/blob/v1.0.0/src/commands/waw/codeclean/check.ts)_
 
-## `sfdx-waw-plugin waw:codeclean:results [--json] [--loglevel trace|debug|info|warn|error|fatal]`
+## `sfdx-waw-plugin waw:codeclean:results -i <string> [--json] [--loglevel trace|debug|info|warn|error|fatal]`
 
 get the results of the code clean service running against your org
 
 ```
 USAGE
-  $ sfdx-waw-plugin waw:codeclean:results [--json] [--loglevel trace|debug|info|warn|error|fatal]
+  $ sfdx-waw-plugin waw:codeclean:results -i <string> [--json] [--loglevel trace|debug|info|warn|error|fatal]
 
 OPTIONS
+  -i, --id=id                                     (required) job id for the code clean service
   --json                                          format output as json
   --loglevel=(trace|debug|info|warn|error|fatal)  [default: warn] logging level for this command invocation
 ```
