@@ -15,7 +15,7 @@ export default class ApexLogGet extends SfdxCommand {
   public static description = messages.getMessage('codeclean.results.description');
   public static examples = [];
 
-  public static readonly flagConfig = {
+  public static readonly flagsConfig = {
     id: flags.string({
       char: 'i',
       description: messages.getMessage('codeclean.flags.id'),
