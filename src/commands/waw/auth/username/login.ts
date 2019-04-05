@@ -1,6 +1,6 @@
 import { flags, SfdxCommand } from '@salesforce/command';
 import { AuthInfo, Messages } from '@salesforce/core';
-import { AnyJson } from '@salesforce/ts-types';
+import { AnyJson, getString } from '@salesforce/ts-types';
 import * as jsforce from 'jsforce';
 
 // Initialize Messages with the current plugin directory
@@ -53,7 +53,8 @@ export default class ApexLogGet extends SfdxCommand {
     const accessTokenOptions = {
       accessToken: conn.accessToken,
       instanceUrl: conn.instanceUrl,
-      loginUrl: instanceUrl
+      loginUrl: instanceUrl,
+      orgId: getString(conn, 'userInfo.organizationId')
     };
 
     const auth = await AuthInfo.create({ username, accessTokenOptions });
