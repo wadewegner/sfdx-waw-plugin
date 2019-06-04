@@ -1,48 +1,131 @@
 {
   "name": "sfdx-waw-plugin",
-  "version": "0.9.4",
   "description": "A plugin for the Salesforce CLI built by Wade Wegner and containing a lot of helpful commands.",
-  "main": "index.js",
+  "version": "1.5.0",
   "author": "Wade Wegner @WadeWegner",
-  "repository": "WadeWegner/sfdx-waw-plugin",
   "bugs": {
     "url": "https://github.com/wadewegner/sfdx-waw-plugin/issues"
   },
-  "scripts": {
-    "test": "node_modules/.bin/mocha",
-    "release": "np"
-  },
-  "keywords": [
-    "force.com",
-    "salesforce",
-    "salesforce-dx",
-    "salesforcedx",
-    "oss"
-  ],
-  "license": "ISC",
   "dependencies": {
-    "async": "^2.1.5",
+    "@oclif/config": "^1",
+    "@salesforce/command": "^1",
+    "@salesforce/core": "^1",
+    "@salesforce/kit": "^1",
+    "async": "^2.6.1",
     "child_process": "^1.0.2",
-    "eslint-config-airbnb-base": "^11.1.1",
-    "fs-extra": "^2.0.0",
-    "heroku-cli-util": "^6.0.16",
-    "jsforce": "^1.7.1",
+    "fs-extra": "^7.0.1",
+    "jsforce": "^1.8.4",
     "jsonfile": "^2.4.0",
-    "node-forge": "^0.7.1",
+    "node-forge": "^0.7.5",
     "open": "0.0.5",
-    "recursive-readdir": "^2.2.1",
-    "request": "^2.81.0",
-    "salesforce-alm": "^40.0.6",
+    "recursive-readdir": "^2.2.2",
+    "request": "^2.87.0",
+    "request-promise": "^4.2.4",
+    "tslib": "^1",
     "url-exists": "^1.0.3"
   },
   "devDependencies": {
-    "chai": "^3.5.0",
-    "eslint": "^3.17.1",
+    "@oclif/command": "^1",
+    "@oclif/dev-cli": "^1",
+    "@oclif/errors": "^1",
+    "@oclif/plugin-help": "^1",
+    "@oclif/test": "^1",
+    "@salesforce/dev-config": "1.1.0",
+    "@salesforce/ts-types": "^1.1.2",
+    "@types/chai": "4",
+    "@types/fs-extra": "^5.0.5",
+    "@types/jsforce": "^1.8.13",
+    "@types/mocha": "5",
+    "@types/node": "10",
+    "@types/node-forge": "^0.8.1",
+    "@types/request": "^2.48.1",
+    "@types/request-promise": "^4.1.42",
+    "chai": "^4",
+    "eslint": "^4.19.1",
     "eslint-config-airbnb-base": "^11.1.1",
-    "eslint-plugin-import": "^2.2.0",
-    "mocha": "^3.2.0",
-    "np": "^2.18.3",
+    "eslint-plugin-import": "^2.12.0",
+    "globby": "8",
+    "mocha": "^6",
+    "np": "^2.20.1",
+    "nyc": "^12",
     "shelljs": "^0.7.7",
-    "sinon": "^1.17.7"
+    "sinon": "7",
+    "ts-node": "^8",
+    "typescript": "^3"
+  },
+  "engines": {
+    "node": ">=8.0.0"
+  },
+  "files": [
+    "/lib",
+    "/messages",
+    "/npm-shrinkwrap.json",
+    "/oclif.manifest.json"
+  ],
+  "homepage": "https://github.com/WadeWegner/sfdx-waw-plugin",
+  "keywords": [
+    "force.com",
+    "oss",
+    "salesforce",
+    "salesforce-dx",
+    "salesforcedx"
+  ],
+  "license": "ISC",
+  "main": "index.js",
+  "oclif": {
+    "commands": "./lib/commands",
+    "topics": {
+      "waw": {
+        "description": "Various commands from Wade Wegner",
+        "subtopics": {
+          "source": {
+            "description": "commands for source"
+          },
+          "connectedapp": {
+            "description": "commands for connected apps"
+          },
+          "project": {
+            "description": "commands for projects"
+          },
+          "trace": {
+            "description": "commands for trace flags"
+          },
+          "apex": {
+            "description": "commands for apex"
+          },
+          "static": {
+            "description": "commands for static resources"
+          },
+          "org": {
+            "description": "commands for org resources"
+          },
+          "codeclean": {
+            "description": "commands for the code clean service from Ben Edwards"
+          },
+          "auth": {
+            "description": "commands for authorizing an org for use with the Salesforce CLI"
+          },
+          "workbench": {
+            "description": "commands for working with Workbench"
+          },
+          "package2": {
+            "description": "commands for working with 2GPs"
+          }
+        }
+      }
+    },
+    "devPlugins": [
+      "@oclif/plugin-help"
+    ]
+  },
+  "repository": "WadeWegner/sfdx-waw-plugin",
+  "scripts": {
+    "postpack": "rm -f oclif.manifest.json npm-shrinkwrap.json",
+    "posttest": "tsc -p test --noEmit && tslint -p test -t stylish",
+    "prepack": "rm -rf lib && tsc && oclif-dev manifest && oclif-dev readme && npm shrinkwrap",
+    "prepare": "rm -rf lib && tsc && oclif-dev manifest && oclif-dev readme && npm shrinkwrap",
+    "release": "np",
+    "test": "nyc mocha --forbid-only \"test/**/*.test.ts\"",
+    "version": "oclif-dev readme && git add README.md"
   }
 }
