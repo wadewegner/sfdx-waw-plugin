@@ -62,12 +62,12 @@ export default class ConnectedAppCreate extends SfdxCommand {
       description: messages.getMessage('connectedapp.create.flags.accessmethod')
     }),
     locations: flags.string({
-      //'Chatter', 'ChatterFeed', 'MobileNav', 'PageLayout', 'Publisher', 'Visualforce'
+      // 'Chatter', 'ChatterFeed', 'MobileNav', 'PageLayout', 'Publisher', 'Visualforce'
       char: 'f',
       description: messages.getMessage('connectedapp.create.flags.locations')
     }),
     options: flags.string({
-      //PersonalEnabled
+      // PersonalEnabled
       char: 'o',
       description: messages.getMessage('connectedapp.create.flags.options')
     }),
@@ -95,9 +95,9 @@ export default class ConnectedAppCreate extends SfdxCommand {
     const accessmethod = this.flags.accessmethod;
     const locations = this.flags.locations;
     const options = this.flags.options;
-    const namespace = this.flags.namespace;
 
-    let canvasConfig = {};
+    const canvasConfig = {};
+
     if (canvasurl != null){
       canvasConfig['canvasUrl'] = canvasurl;
       canvasConfig['accessMethod'] = accessmethod;
