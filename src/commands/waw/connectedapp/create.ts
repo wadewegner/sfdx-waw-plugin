@@ -1,7 +1,7 @@
 
 import { flags, SfdxCommand } from '@salesforce/command';
 import { Messages } from '@salesforce/core';
-import { set } from '@salesforce/kit';
+import { set, AsyncOptionalCreatable } from '@salesforce/kit';
 import { writeFile } from 'fs-extra';
 import { MetadataInfo, SaveResult } from 'jsforce';
 import * as forge from 'node-forge';
@@ -95,6 +95,7 @@ export default class ConnectedAppCreate extends SfdxCommand {
     const accessmethod = this.flags.accessmethod;
     const locations = this.flags.locations;
     const options = this.flags.options;
+    const namespace = this.flags.namespace;
 
     let canvasConfig = {};
     if (canvasurl != null){
@@ -141,8 +142,14 @@ export default class ConnectedAppCreate extends SfdxCommand {
   private async createConnectedApp(metadata): Promise<SaveResult | MetadataInfo> {
     const conn = this.org.getConnection();
     const results = await conn.metadata.create('ConnectedApp', metadata) as SaveResult;
+
     if (results.success) {
-      return (await conn.metadata.read('ConnectedApp', results.fullName) as MetadataInfo);
+      let connectedAppName = results.fullName;
+      if (this.flags.namespace != null){
+        connectedAppName = this.flags.namespace + '__' + connectedAppName;
+      }
+
+      return (await conn.metadata.read('ConnectedApp', connectedAppName) as MetadataInfo);
     }
     return results;
   }

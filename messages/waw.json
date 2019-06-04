@@ -42,7 +42,13 @@
         "callbackurl": "callbackUrl (default is \"sfdx://success\")",
         "description": "connected app description",
         "scopes": "scopes separated by commas (defaut: Basic, Api, Web, RefreshToken; valid: Basic, Api, Web, Full, Chatter, CustomApplications, RefreshToken, OpenID, CustomPermissions, Wave, Eclair)",
-        "contactemail": "connected app contact email"
+        "contactemail": "connected app contact email",
+        "consumersecret": "A value that is combined with the consumerKey and used by the consumer for identification to Salesforce",
+        "canvasurl": "he URL of the third-party app that’s exposed as a canvas app.",
+        "accessmethod": "Indicates how the canvas app initiates the OAuth authentication flow. Valid values are 'GET' and 'POST'",
+        "locations": "Indicates where the canvas app can appear to the user. Valid values are 'Chatter', 'ChatterFeed', 'MobileNav', 'PageLayout', 'Publisher', 'Visualforce'",
+        "options": "Indicates whether to hide the share button and header in the publisher for your canvas app, and whether the app is a canvas personal app.",
+        "namespace": "Indicate if the Salesforce Organization has a namespace"
       }
     },
     "list": {
