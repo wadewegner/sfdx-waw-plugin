@@ -98,7 +98,7 @@ export default class ConnectedAppCreate extends SfdxCommand {
 
     const canvasConfig = {};
 
-    if (canvasurl != null){
+    if (canvasurl != null) {
       canvasConfig['canvasUrl'] = canvasurl;
       canvasConfig['accessMethod'] = accessmethod;
       canvasConfig['locations'] = locations.split(',');
@@ -113,7 +113,7 @@ export default class ConnectedAppCreate extends SfdxCommand {
       oauthConfig: { callbackUrl, consumerSecret, scopes }
     }];
 
-    if (canvasurl != null){
+    if (canvasurl != null) {
       metadata[0]['canvasConfig'] = canvasConfig;
     }
 
@@ -145,7 +145,7 @@ export default class ConnectedAppCreate extends SfdxCommand {
 
     if (results.success) {
       let connectedAppName = results.fullName;
-      if (this.flags.namespace != null){
+      if (this.flags.namespace != null) {
         connectedAppName = this.flags.namespace + '__' + connectedAppName;
       }
 
