@@ -1,7 +1,7 @@
 
 import { flags, SfdxCommand } from '@salesforce/command';
 import { Messages } from '@salesforce/core';
-import { set, AsyncOptionalCreatable } from '@salesforce/kit';
+import { set } from '@salesforce/kit';
 import { writeFile } from 'fs-extra';
 import { MetadataInfo, SaveResult } from 'jsforce';
 import * as forge from 'node-forge';
