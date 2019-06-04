@@ -22,7 +22,7 @@ A plugin for the Salesforce CLI built by Wade Wegner and containing a lot of hel
 * [`sfdx-waw-plugin waw:codeclean:check -i <string> [--json] [--loglevel trace|debug|info|warn|error|fatal]`](#sfdx-waw-plugin-wawcodecleancheck--i-string---json---loglevel-tracedebuginfowarnerrorfatal)
 * [`sfdx-waw-plugin waw:codeclean:results -i <string> [--json] [--loglevel trace|debug|info|warn|error|fatal]`](#sfdx-waw-plugin-wawcodecleanresults--i-string---json---loglevel-tracedebuginfowarnerrorfatal)
 * [`sfdx-waw-plugin waw:codeclean:start [-u <string>] [--apiversion <string>] [--json] [--loglevel trace|debug|info|warn|error|fatal]`](#sfdx-waw-plugin-wawcodecleanstart--u-string---apiversion-string---json---loglevel-tracedebuginfowarnerrorfatal)
-* [`sfdx-waw-plugin waw:connectedapp:create -n <string> [-l <string>] [-r] [-c <string>] [-d <string>] [-s <string>] [-e <string>] [-u <string>] [--apiversion <string>] [--json] [--loglevel trace|debug|info|warn|error|fatal]`](#sfdx-waw-plugin-wawconnectedappcreate--n-string--l-string--r--c-string--d-string--s-string--e-string--u-string---apiversion-string---json---loglevel-tracedebuginfowarnerrorfatal)
+* [`sfdx-waw-plugin waw:connectedapp:create -n <string> [-l <string>] [-r] [-c <string>] [-d <string>] [-s <string>] [-e <string>] [-q <string>] [-i <string>] [-m <string>] [-f <string>] [-o <string>] [-p <string>] [-u <string>] [--apiversion <string>] [--json] [--loglevel trace|debug|info|warn|error|fatal]`](#sfdx-waw-plugin-wawconnectedappcreate--n-string--l-string--r--c-string--d-string--s-string--e-string--q-string--i-string--m-string--f-string--o-string--p-string--u-string---apiversion-string---json---loglevel-tracedebuginfowarnerrorfatal)
 * [`sfdx-waw-plugin waw:connectedapp:list -n <string> [-u <string>] [--apiversion <string>] [--json] [--loglevel trace|debug|info|warn|error|fatal]`](#sfdx-waw-plugin-wawconnectedapplist--n-string--u-string---apiversion-string---json---loglevel-tracedebuginfowarnerrorfatal)
 * [`sfdx-waw-plugin waw:org:share -e <email> [-u <string>] [--apiversion <string>] [--json] [--loglevel trace|debug|info|warn|error|fatal]`](#sfdx-waw-plugin-waworgshare--e-email--u-string---apiversion-string---json---loglevel-tracedebuginfowarnerrorfatal)
 * [`sfdx-waw-plugin waw:package2:update -d <string> [-i <id>] [-n <string>] [-v <string>] [--json] [--loglevel trace|debug|info|warn|error|fatal]`](#sfdx-waw-plugin-wawpackage2update--d-string--i-id--n-string--v-string---json---loglevel-tracedebuginfowarnerrorfatal)
@@ -130,21 +130,42 @@ OPTIONS
 
 _See code: [src/commands/waw/codeclean/start.ts](https://github.com/WadeWegner/sfdx-waw-plugin/blob/v1.5.0/src/commands/waw/codeclean/start.ts)_
 
-## `sfdx-waw-plugin waw:connectedapp:create -n <string> [-l <string>] [-r] [-c <string>] [-d <string>] [-s <string>] [-e <string>] [-u <string>] [--apiversion <string>] [--json] [--loglevel trace|debug|info|warn|error|fatal]`
+## `sfdx-waw-plugin waw:connectedapp:create -n <string> [-l <string>] [-r] [-c <string>] [-d <string>] [-s <string>] [-e <string>] [-q <string>] [-i <string>] [-m <string>] [-f <string>] [-o <string>] [-p <string>] [-u <string>] [--apiversion <string>] [--json] [--loglevel trace|debug|info|warn|error|fatal]`
 
 create a connected app in your org
 
 ```
 USAGE
   $ sfdx-waw-plugin waw:connectedapp:create -n <string> [-l <string>] [-r] [-c <string>] [-d <string>] [-s <string>] [-e 
-  <string>] [-u <string>] [--apiversion <string>] [--json] [--loglevel trace|debug|info|warn|error|fatal]
+  <string>] [-q <string>] [-i <string>] [-m <string>] [-f <string>] [-o <string>] [-p <string>] [-u <string>] 
+  [--apiversion <string>] [--json] [--loglevel trace|debug|info|warn|error|fatal]
 
 OPTIONS
   -c, --callbackurl=callbackurl                   callbackUrl (default is "sfdx://success")
   -d, --description=description                   connected app description
   -e, --contactemail=contactemail                 connected app contact email
+
+  -f, --locations=locations                       Indicates where the canvas app can appear to the user. Valid values
+                                                  are 'Chatter', 'ChatterFeed', 'MobileNav', 'PageLayout', 'Publisher',
+                                                  'Visualforce'
+
+  -i, --canvasurl=canvasurl                       he URL of the third-party app that’s exposed as a canvas app.
+
   -l, --label=label                               connected app label
+
+  -m, --accessmethod=accessmethod                 Indicates how the canvas app initiates the OAuth authentication flow.
+                                                  Valid values are 'GET' and 'POST'
+
   -n, --name=name                                 (required) connected app name
+
+  -o, --options=options                           Indicates whether to hide the share button and header in the publisher
+                                                  for your canvas app, and whether the app is a canvas personal app.
+
+  -p, --namespace=namespace                       Indicate if the Salesforce Organization has a namespace
+
+  -q, --consumersecret=consumersecret             A value that is combined with the consumerKey and used by the consumer
+                                                  for identification to Salesforce
+
   -r, --certificate                               create and register a certificate
 
   -s, --scopes=scopes                             scopes separated by commas (defaut: Basic, Api, Web, RefreshToken;
