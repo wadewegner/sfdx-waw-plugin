@@ -74,7 +74,8 @@ export default class ConnectedAppCreate extends SfdxCommand {
 
     const accessToken = conn.accessToken;
     const instanceUrl = conn.instanceUrl;
-    const serverUrl = `${instanceUrl}/services/Soap/u/46.0`;
+    const apiVersion = conn.version;
+    const serverUrl = `${instanceUrl}/services/Soap/u/${apiVersion}`;
 
     const workbenchUrlWithSid = url.resolve(targetWorkbenchUrl, `/login.php?serverUrl=${serverUrl}&sid=${accessToken}`);
 
