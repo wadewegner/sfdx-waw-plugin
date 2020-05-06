@@ -1,6 +1,7 @@
 import { SfdxError } from '@salesforce/core';
 import { Dictionary, get } from '@salesforce/ts-types';
 import { spawn, SpawnOptions } from 'child_process';
+const os = require('os');
 
 export const runCommand = (fullCommand: string): Promise<Dictionary> => {
   const error = new Error(); // Get stack here to use for later
@@ -15,7 +16,8 @@ export const runCommand = (fullCommand: string): Promise<Dictionary> => {
 
   const spawnOpt: SpawnOptions = {
     // Always use json in stdout
-    env: Object.assign({ SFDX_JSON_TO_STDOUT: 'true' }, process.env)
+    env: Object.assign({ SFDX_JSON_TO_STDOUT: 'true' }, process.env),
+    shell: os.platform() === 'win32' //FOR WINDOWS USERS
   };
 
   return new Promise((resolve, reject) => {
